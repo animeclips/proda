@@ -9,7 +9,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
         }
         
         /* ═══════════════════════════════════
-           КРАСИВЫЙ ФОН — ЛЕГКИЙ
+           ФОН
            ═══════════════════════════════════ */
         
         .bg {
@@ -83,60 +83,24 @@
             will-change: transform, opacity;
         }
         
-        .p1 {
-            background: var(--c1);
-            left: 10%;
-            animation: rise1 18s linear infinite;
-        }
-        
-        .p2 {
-            background: var(--c2);
-            left: 30%;
-            animation: rise2 20s linear infinite 3s;
-        }
-        
-        .p3 {
-            background: var(--c3);
-            left: 50%;
-            animation: rise1 22s linear infinite 6s;
-        }
-        
-        .p4 {
-            background: var(--c4);
-            left: 70%;
-            animation: rise2 19s linear infinite 9s;
-        }
-        
-        .p5 {
-            background: var(--c1);
-            left: 90%;
-            animation: rise1 21s linear infinite 12s;
-        }
+        .p1 { background: var(--c1); left: 10%; animation: rise1 18s linear infinite; }
+        .p2 { background: var(--c2); left: 30%; animation: rise2 20s linear infinite 3s; }
+        .p3 { background: var(--c3); left: 50%; animation: rise1 22s linear infinite 6s; }
+        .p4 { background: var(--c4); left: 70%; animation: rise2 19s linear infinite 9s; }
+        .p5 { background: var(--c1); left: 90%; animation: rise1 21s linear infinite 12s; }
         
         @keyframes rise1 {
-            0% { 
-                opacity: 0; 
-                transform: translateY(100vh) translateX(0) scale(0); 
-            }
+            0% { opacity: 0; transform: translateY(100vh) translateX(0) scale(0); }
             10% { opacity: 0.6; }
             90% { opacity: 0.6; }
-            100% { 
-                opacity: 0; 
-                transform: translateY(-10vh) translateX(30px) scale(1.5); 
-            }
+            100% { opacity: 0; transform: translateY(-10vh) translateX(30px) scale(1.5); }
         }
         
         @keyframes rise2 {
-            0% { 
-                opacity: 0; 
-                transform: translateY(100vh) translateX(0) scale(0); 
-            }
+            0% { opacity: 0; transform: translateY(100vh) translateX(0) scale(0); }
             10% { opacity: 0.6; }
             90% { opacity: 0.6; }
-            100% { 
-                opacity: 0; 
-                transform: translateY(-10vh) translateX(-30px) scale(1.5); 
-            }
+            100% { opacity: 0; transform: translateY(-10vh) translateX(-30px) scale(1.5); }
         }
         
         /* ═══════════════════════════════════
@@ -146,7 +110,7 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
             margin: 0 auto;
             padding: 30px 18px;
@@ -159,12 +123,12 @@
         }
         
         /* ═══════════════════════════════════
-           PROFILE
+           PROFILE — СТИЛЬНО
            ═══════════════════════════════════ */
         
         .profile {
             text-align: center;
-            margin-bottom: 26px;
+            margin-bottom: 28px;
             animation: fadeIn 0.6s ease-out;
         }
         
@@ -176,9 +140,9 @@
         .ava-box {
             position: relative;
             display: inline-block;
-            width: 90px;
-            height: 90px;
-            margin-bottom: 14px;
+            width: 95px;
+            height: 95px;
+            margin-bottom: 16px;
         }
         
         .ring {
@@ -196,8 +160,8 @@
         
         .ava {
             position: relative;
-            width: 90px;
-            height: 90px;
+            width: 95px;
+            height: 95px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #0a0a0f;
@@ -205,42 +169,82 @@
             z-index: 1;
         }
         
+        /* Имя — ЖИРНОЕ */
         .name {
-            font-size: 26px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
             font-weight: 900;
-            letter-spacing: -0.5px;
-            margin-bottom: 4px;
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
         }
         
+        /* Ник — ЯРКИЙ */
         .handle {
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--c1);
-            margin-bottom: 6px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
         
+        /* Описание — СТИЛЬНОЕ */
         .desc {
-            font-size: 13px;
-            color: #bbb;
-            line-height: 1.5;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.6;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .desc .emoji {
+            font-size: 16px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        .desc .sep {
+            color: var(--c3);
+            font-weight: 800;
+            opacity: 0.6;
+        }
+        
+        .desc .word {
+            background: linear-gradient(135deg, var(--c2), var(--c3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
         
         /* ═══════════════════════════════════
-           BAIT
+           BAIT — ПРИВЛЕКАТЕЛЬНО
            ═══════════════════════════════════ */
         
         .bait {
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             animation: fadeIn 0.6s ease-out 0.15s both;
         }
         
         .bait-title {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 800;
             text-align: center;
-            margin-bottom: 12px;
-            line-height: 1.3;
+            margin-bottom: 14px;
+            line-height: 1.4;
         }
         
         .hl {
@@ -248,26 +252,30 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-size: 21px;
         }
         
         .items {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 9px;
         }
         
+        /* Карточки — СТИЛЬНЫЕ */
         .item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 11px 13px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
+            gap: 11px;
+            padding: 12px 14px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 13px;
             font-size: 13px;
             font-weight: 600;
-            color: #ccc;
+            color: #e0e0e0;
+            text-align: left;
             animation: slideUp 0.4s ease-out both;
+            transition: all 0.3s ease;
         }
         
         .item:nth-child(1) { animation-delay: 0.25s; }
@@ -279,141 +287,187 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        @media (hover: hover) {
+            .item:hover {
+                background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+                border-color: rgba(255,255,255,0.12);
+                transform: translateX(3px);
+            }
+        }
+        
         .item .e {
-            font-size: 18px;
+            font-size: 20px;
             flex-shrink: 0;
-            width: 24px;
+            width: 26px;
             text-align: center;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+        
+        .item .txt {
+            flex: 1;
+            line-height: 1.4;
+        }
+        
+        /* Выделяем ключевые слова */
+        .item .highlight {
+            color: var(--c2);
+            font-weight: 700;
         }
         
         /* ═══════════════════════════════════
-           ARROWS
+           ARROWS — ДИНАМИЧНЫЕ
            ═══════════════════════════════════ */
         
         .arrows {
             display: flex;
             flex-direction: column;
             gap: 0;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             animation: fadeIn 0.5s ease-out 0.55s both;
         }
         
         .a {
-            font-size: 20px;
+            font-size: 22px;
             line-height: 0.7;
             color: var(--c1);
             animation: bob 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px var(--c1));
             will-change: transform;
         }
         
         .a:nth-child(1) { opacity: 0.3; animation-delay: 0s; }
-        .a:nth-child(2) { opacity: 0.5; animation-delay: 0.1s; }
-        .a:nth-child(3) { opacity: 0.8; animation-delay: 0.2s; }
+        .a:nth-child(2) { opacity: 0.6; animation-delay: 0.12s; }
+        .a:nth-child(3) { opacity: 1; animation-delay: 0.24s; }
         
         @keyframes bob {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(4px); }
+            50% { transform: translateY(5px); }
         }
         
         /* ═══════════════════════════════════
-           BUTTON
+           BUTTON — МОЩНАЯ
            ═══════════════════════════════════ */
         
         .btn {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 13px;
             width: 100%;
-            padding: 15px 16px;
-            background: rgba(255,0,0,0.12);
-            border: 1px solid rgba(255,0,0,0.25);
-            border-radius: 14px;
+            padding: 16px 17px;
+            background: linear-gradient(135deg, rgba(255,0,0,0.15), rgba(255,0,0,0.08));
+            border: 1.5px solid rgba(255,0,0,0.3);
+            border-radius: 15px;
             text-decoration: none;
             color: #fff;
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            transition: all 0.25s ease;
             animation: fadeIn 0.5s ease-out 0.65s both;
             will-change: transform;
         }
         
         .btn:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
         
         @media (hover: hover) {
             .btn:hover {
-                transform: translateY(-2px);
-                border-color: rgba(255,0,0,0.4);
+                transform: translateY(-3px);
+                border-color: rgba(255,0,0,0.5);
+                background: linear-gradient(135deg, rgba(255,0,0,0.2), rgba(255,0,0,0.1));
+                box-shadow: 0 8px 25px rgba(255,0,0,0.15);
             }
         }
         
+        /* Пульсация */
         .btn::before {
             content: '';
             position: absolute;
             inset: -2px;
-            border-radius: 16px;
-            border: 2px solid rgba(255,0,0,0.2);
+            border-radius: 17px;
+            border: 2px solid rgba(255,0,0,0.25);
             animation: pulse 2.5s ease-out infinite;
             pointer-events: none;
         }
         
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.03); opacity: 0; }
+            100% { transform: scale(1.04); opacity: 0; }
+        }
+        
+        /* Блеск при hover */
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        @media (hover: hover) {
+            .btn:hover::after {
+                left: 100%;
+            }
         }
         
         .badge {
             position: absolute;
             top: -1px;
-            right: 12px;
-            background: linear-gradient(135deg, #f00, #c00);
+            right: 13px;
+            background: linear-gradient(135deg, #f00, #d00);
             color: #fff;
-            font-size: 7px;
-            font-weight: 800;
+            font-size: 8px;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 3px 7px;
-            border-radius: 0 0 5px 5px;
+            letter-spacing: 0.8px;
+            padding: 3px 8px;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 2px 8px rgba(255,0,0,0.3);
         }
         
         .icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 11px;
-            background: linear-gradient(135deg, #f00, #c00);
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f00, #d00);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
             flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(255,0,0,0.25);
         }
         
         .info { flex: 1; min-width: 0; }
         
         .title {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 800;
             line-height: 1.2;
+            margin-bottom: 2px;
         }
         
         .sub {
             font-size: 11px;
-            color: #999;
-            margin-top: 2px;
+            color: #aaa;
+            font-weight: 600;
         }
         
         .go {
-            font-size: 16px;
-            color: #999;
+            font-size: 18px;
+            color: #bbb;
             flex-shrink: 0;
-            transition: transform 0.2s ease;
+            transition: all 0.25s ease;
             will-change: transform;
         }
         
         @media (hover: hover) {
             .btn:hover .go {
-                transform: translateX(3px);
+                transform: translateX(4px);
+                color: #fff;
             }
         }
         
@@ -423,13 +477,14 @@
         
         .ft {
             text-align: center;
-            margin-top: 24px;
+            margin-top: 26px;
             animation: fadeIn 0.5s ease-out 0.75s both;
         }
         
         .ft p {
             font-size: 10px;
-            color: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.25);
+            font-weight: 600;
         }
         
         .heart {
@@ -441,7 +496,7 @@
         
         @keyframes beat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.2); }
         }
         
         /* ═══════════════════════════════════
@@ -451,26 +506,30 @@
         @media (max-height: 700px) {
             .container { padding: 20px 16px; }
             .profile { margin-bottom: 18px; }
-            .ava-box { width: 75px; height: 75px; margin-bottom: 10px; }
+            .ava-box { width: 80px; height: 80px; margin-bottom: 12px; }
             .ring { inset: -2px; }
-            .ava { width: 75px; height: 75px; }
-            .name { font-size: 22px; }
-            .bait { margin-bottom: 14px; }
+            .ava { width: 80px; height: 80px; }
+            .name { font-size: 24px; }
+            .desc { font-size: 13px; }
+            .bait { margin-bottom: 16px; }
             .bait-title { font-size: 16px; margin-bottom: 10px; }
-            .item { padding: 9px 11px; font-size: 12px; }
-            .arrows { margin-bottom: 8px; }
-            .btn { padding: 13px 14px; }
-            .icon { width: 38px; height: 38px; font-size: 18px; }
+            .hl { font-size: 18px; }
+            .item { padding: 10px 12px; font-size: 12px; }
+            .arrows { margin-bottom: 10px; }
+            .btn { padding: 14px 15px; }
+            .icon { width: 40px; height: 40px; font-size: 19px; }
             .title { font-size: 14px; }
-            .ft { margin-top: 16px; }
+            .ft { margin-top: 18px; }
         }
         
         @media (min-width: 768px) {
             .container { padding: 40px 20px; }
-            .ava-box { width: 100px; height: 100px; }
-            .ava { width: 100px; height: 100px; }
-            .name { font-size: 30px; }
-            .bait-title { font-size: 20px; }
+            .ava-box { width: 105px; height: 105px; }
+            .ava { width: 105px; height: 105px; }
+            .name { font-size: 34px; }
+            .desc { font-size: 15px; }
+            .bait-title { font-size: 21px; }
+            .hl { font-size: 23px; }
         }
         
         ::-webkit-scrollbar { display: none; }
@@ -510,7 +569,16 @@
             
             <h1 class="name">ANIMECLIPS</h1>
             <p class="handle">@animeclips</p>
-            <p class="desc">Пересказ манг|манхв</p>
+            
+            <!-- СТИЛЬНОЕ ОПИСАНИЕ -->
+            <div class="desc">
+                <span class="emoji">📖</span>
+                <span class="word">Манга</span>
+                <span class="sep">•</span>
+                <span class="word">Манхва</span>
+                <span class="sep">•</span>
+                <span class="word">Пересказ</span>
+            </div>
         </div>
         
         <!-- BAIT -->
@@ -522,15 +590,21 @@
             <div class="items">
                 <div class="item">
                     <span class="e">🎬</span>
-                    <span>Продолжение пересказа манхвы|манги не частями а целым роликом</span>
+                    <span class="txt">
+                        <span class="highlight">Полный пересказ</span> манхвы целым роликом
+                    </span>
                 </div>
                 <div class="item">
                     <span class="e">🔥</span>
-                    <span>Эксклюзивный контент</span>
+                    <span class="txt">
+                        <span class="highlight">Эксклюзивный</span> контент только для вас
+                    </span>
                 </div>
                 <div class="item">
                     <span class="e">🚫</span>
-                    <span>То что не смог выложить на канал</span>
+                    <span class="txt">
+                        То что <span class="highlight">не пропустили</span> на канале
+                    </span>
                 </div>
             </div>
         </div>
@@ -548,7 +622,7 @@
             <div class="icon">▶️</div>
             <div class="info">
                 <div class="title">Смотреть на YouTube</div>
-                <div class="sub">Нажми чтобы перейти</div>
+                <div class="sub">Нажми чтобы перейти →</div>
             </div>
             <span class="go">→</span>
         </a>
