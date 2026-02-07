@@ -9,78 +9,150 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --accent: #e73c7e;
-            --accent2: #23a6d5;
-            --text: #fff;
-            --dim: #ccc;
-            --muted: #888;
+            --c1: #ff0844;
+            --c2: #ffb199;
+            --c3: #a846a0;
+            --c4: #6c35d4;
         }
         
         html, body {
             height: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
             font-family: 'Outfit', sans-serif;
-            color: var(--text);
-            min-height: 100vh;
-            min-height: 100dvh;
+            color: #fff;
+            background: #0a0a0f;
             overflow-x: hidden;
-            background: #000;
         }
         
-        /* ═══════════════════════════════
-           GIF ФОН — РАСТЯГИВАЕТСЯ
-           БЕЗ ЧЁРНЫХ ПОЛОС
-           ═══════════════════════════════ */
+        /* ═══════════════════════════════════
+           КРАСИВЫЙ ФОН — ЛЕГКИЙ
+           Mesh gradient + частицы
+           ═══════════════════════════════════ */
         
-        .bg-gif {
+        .bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: 0;
-            overflow: hidden;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 8, 68, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(108, 53, 212, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(168, 70, 160, 0.12) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0f 0%, #110a1a 50%, #0f0a15 100%);
+            animation: bgShift 25s ease-in-out infinite;
+            will-change: transform;
         }
         
-        .bg-gif img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            display: block;
+        @keyframes bgShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.02) rotate(0.5deg); }
         }
         
-        /* Затемнение поверх GIF чтобы текст читался */
-        .bg-overlay {
+        /* Сетка — очень лёгкая */
+        .grid {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Можно менять прозрачность: 0.5 = 50%, 0.7 = 70% и тд */
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.008) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.008) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.5;
         }
         
-        /* ═══════════════════════════════
-           CONTAINER
-           ═══════════════════════════════ */
+        /* Частицы — ТОЛЬКО 5 штук */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
         
-        .wrap {
+        .p {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+        
+        .p1 {
+            background: var(--c1);
+            left: 10%;
+            animation: rise1 18s linear infinite;
+        }
+        
+        .p2 {
+            background: var(--c2);
+            left: 30%;
+            animation: rise2 20s linear infinite 3s;
+        }
+        
+        .p3 {
+            background: var(--c3);
+            left: 50%;
+            animation: rise1 22s linear infinite 6s;
+        }
+        
+        .p4 {
+            background: var(--c4);
+            left: 70%;
+            animation: rise2 19s linear infinite 9s;
+        }
+        
+        .p5 {
+            background: var(--c1);
+            left: 90%;
+            animation: rise1 21s linear infinite 12s;
+        }
+        
+        @keyframes rise1 {
+            0% { 
+                opacity: 0; 
+                transform: translateY(100vh) translateX(0) scale(0); 
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-10vh) translateX(30px) scale(1.5); 
+            }
+        }
+        
+        @keyframes rise2 {
+            0% { 
+                opacity: 0; 
+                transform: translateY(100vh) translateX(0) scale(0); 
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-10vh) translateX(-30px) scale(1.5); 
+            }
+        }
+        
+        /* ═══════════════════════════════════
+           LAYOUT
+           ═══════════════════════════════════ */
+        
+        .container {
             position: relative;
-            z-index: 2;
-            max-width: 420px;
+            z-index: 1;
+            max-width: 400px;
             width: 100%;
             margin: 0 auto;
-            padding: 40px 20px 40px;
+            padding: 30px 18px;
             min-height: 100vh;
             min-height: 100dvh;
             display: flex;
@@ -89,395 +161,370 @@
             justify-content: center;
         }
         
-        /* ═══════════════════════════════
+        /* ═══════════════════════════════════
            PROFILE
-           ═══════════════════════════════ */
+           ═══════════════════════════════════ */
         
         .profile {
             text-align: center;
-            margin-bottom: 30px;
-            animation: fadeDown 0.7s ease-out;
+            margin-bottom: 26px;
+            animation: fadeIn 0.6s ease-out;
         }
         
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-20px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .ava-wrap {
+        .ava-box {
             position: relative;
             display: inline-block;
-            margin-bottom: 18px;
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
+            margin-bottom: 14px;
         }
         
-        /* Кольцо */
-        .ava-ring {
+        /* Кольцо — простое */
+        .ring {
             position: absolute;
-            inset: -4px;
+            inset: -3px;
             border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: var(--accent);
-            border-right-color: var(--accent2);
-            border-bottom-color: #8b5cf6;
-            border-left-color: var(--accent);
-            animation: spin 3s linear infinite;
+            background: conic-gradient(var(--c1), var(--c2), var(--c3), var(--c4), var(--c1));
+            animation: rotate 4s linear infinite;
+            will-change: transform;
         }
         
-        @keyframes spin {
+        @keyframes rotate {
             to { transform: rotate(360deg); }
         }
         
-        /* АВАТАРКА — РАБОТАЕТ С ЛЮБЫМ РАЗМЕРОМ */
-        .ava-img {
-            width: 100px;
-            height: 100px;
+        .ava {
+            position: relative;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
-            object-position: center;
+            border: 3px solid #0a0a0f;
             display: block;
-            border: 3px solid rgba(0,0,0,0.5);
+            z-index: 1;
         }
         
         .name {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             letter-spacing: -0.5px;
             margin-bottom: 4px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         
-        .tag {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 8px;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
-        }
-        
-        .bio {
+        .handle {
             font-size: 13px;
-            color: var(--dim);
-            line-height: 1.5;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            font-weight: 600;
+            color: var(--c1);
+            margin-bottom: 6px;
         }
         
-        /* ═══════════════════════════════
+        .desc {
+            font-size: 13px;
+            color: #bbb;
+            line-height: 1.5;
+        }
+        
+        /* ═══════════════════════════════════
            BAIT
-           ═══════════════════════════════ */
+           ═══════════════════════════════════ */
         
         .bait {
-            text-align: center;
-            margin-bottom: 24px;
             width: 100%;
-            animation: fadeDown 0.7s ease-out 0.15s both;
+            margin-bottom: 20px;
+            animation: fadeIn 0.6s ease-out 0.15s both;
         }
         
         .bait-title {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 800;
-            margin-bottom: 14px;
-            line-height: 1.4;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            text-align: center;
+            margin-bottom: 12px;
+            line-height: 1.3;
         }
         
-        .bait-title .hl {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
+        .hl {
+            background: linear-gradient(135deg, var(--c1), var(--c3));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .bait-items {
+        .items {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            width: 100%;
         }
         
-        .bait-item {
+        .item {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.08);
+            padding: 11px 13px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 12px;
-            padding: 12px 14px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            color: var(--dim);
-            text-align: left;
-            animation: fadeUp 0.5s ease-out both;
+            color: #ccc;
+            animation: slideUp 0.4s ease-out both;
         }
         
-        .bait-item:nth-child(1) { animation-delay: 0.25s; }
-        .bait-item:nth-child(2) { animation-delay: 0.35s; }
-        .bait-item:nth-child(3) { animation-delay: 0.45s; }
+        .item:nth-child(1) { animation-delay: 0.25s; }
+        .item:nth-child(2) { animation-delay: 0.35s; }
+        .item:nth-child(3) { animation-delay: 0.45s; }
         
-        .bait-item .em {
-            font-size: 20px;
-            flex-shrink: 0;
-            width: 28px;
-            text-align: center;
-        }
-        
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(12px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* ═══════════════════════════════
+        .item .e {
+            font-size: 18px;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+        
+        /* ═══════════════════════════════════
            ARROWS
-           ═══════════════════════════════ */
+           ═══════════════════════════════════ */
         
         .arrows {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-bottom: 14px;
             gap: 0;
-            animation: fadeUp 0.5s ease-out 0.55s both;
+            margin-bottom: 12px;
+            animation: fadeIn 0.5s ease-out 0.55s both;
         }
         
-        .arr {
-            font-size: 22px;
-            line-height: 0.8;
-            color: var(--accent);
-            animation: bounce 1.5s ease-in-out infinite;
-            text-shadow: 0 0 10px rgba(231,60,126,0.4);
+        .a {
+            font-size: 20px;
+            line-height: 0.7;
+            color: var(--c1);
+            animation: bob 1.5s ease-in-out infinite;
+            will-change: transform;
         }
         
-        .arr:nth-child(1) { opacity: 0.35; animation-delay: 0s; }
-        .arr:nth-child(2) { opacity: 0.6; animation-delay: 0.12s; }
-        .arr:nth-child(3) { opacity: 1; animation-delay: 0.24s; }
+        .a:nth-child(1) { opacity: 0.3; animation-delay: 0s; }
+        .a:nth-child(2) { opacity: 0.5; animation-delay: 0.1s; }
+        .a:nth-child(3) { opacity: 0.8; animation-delay: 0.2s; }
         
-        @keyframes bounce {
+        @keyframes bob {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
+            50% { transform: translateY(4px); }
         }
         
-        /* ═══════════════════════════════
-           MAIN BUTTON
-           ═══════════════════════════════ */
+        /* ═══════════════════════════════════
+           BUTTON
+           ═══════════════════════════════════ */
         
-        .main-btn {
+        .btn {
             display: flex;
             align-items: center;
             gap: 12px;
             width: 100%;
-            padding: 16px 18px;
-            background: rgba(255, 0, 0, 0.15);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            border-radius: 16px;
+            padding: 15px 16px;
+            background: rgba(255,0,0,0.12);
+            border: 1px solid rgba(255,0,0,0.25);
+            border-radius: 14px;
             text-decoration: none;
-            color: var(--text);
-            cursor: pointer;
+            color: #fff;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            animation: fadeUp 0.5s ease-out 0.65s both;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            animation: fadeIn 0.5s ease-out 0.65s both;
+            will-change: transform;
         }
         
-        .main-btn::after {
+        .btn:active {
+            transform: scale(0.97);
+        }
+        
+        @media (hover: hover) {
+            .btn:hover {
+                transform: translateY(-2px);
+                border-color: rgba(255,0,0,0.4);
+            }
+        }
+        
+        .btn::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s;
-        }
-        
-        .main-btn:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255,0,0,0.5);
-            background: rgba(255, 0, 0, 0.2);
-        }
-        
-        .main-btn:hover::after {
-            transform: translateX(100%);
-        }
-        
-        .main-btn:active {
-            transform: translateY(0) scale(0.98);
-        }
-        
-        /* Пульсация */
-        .pulse {
-            position: absolute;
             inset: -2px;
-            border-radius: 18px;
-            border: 2px solid rgba(255,0,0,0.25);
-            animation: pulseAnim 2s ease-out infinite;
+            border-radius: 16px;
+            border: 2px solid rgba(255,0,0,0.2);
+            animation: pulse 2.5s ease-out infinite;
             pointer-events: none;
         }
         
-        @keyframes pulseAnim {
+        @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
             100% { transform: scale(1.03); opacity: 0; }
         }
         
-        .btn-badge {
+        .badge {
             position: absolute;
             top: -1px;
-            right: 14px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
-            color: white;
-            font-size: 8px;
+            right: 12px;
+            background: linear-gradient(135deg, #f00, #c00);
+            color: #fff;
+            font-size: 7px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 3px 8px;
-            border-radius: 0 0 6px 6px;
+            letter-spacing: 0.5px;
+            padding: 3px 7px;
+            border-radius: 0 0 5px 5px;
         }
         
-        .btn-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #FF0000, #CC0000);
+        .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #f00, #c00);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 20px;
             flex-shrink: 0;
         }
         
-        .btn-info { flex: 1; }
+        .info { flex: 1; min-width: 0; }
         
-        .btn-title {
-            font-size: 16px;
+        .title {
+            font-size: 15px;
             font-weight: 800;
+            line-height: 1.2;
         }
         
-        .btn-sub {
+        .sub {
             font-size: 11px;
-            color: var(--muted);
+            color: #999;
             margin-top: 2px;
         }
         
-        .btn-go {
-            color: var(--muted);
-            font-size: 18px;
-            transition: transform 0.3s, color 0.3s;
+        .go {
+            font-size: 16px;
+            color: #999;
             flex-shrink: 0;
+            transition: transform 0.2s ease;
+            will-change: transform;
         }
         
-        .main-btn:hover .btn-go {
-            transform: translateX(4px);
-            color: #fff;
+        @media (hover: hover) {
+            .btn:hover .go {
+                transform: translateX(3px);
+            }
         }
         
-        /* ═══════════════════════════════
+        /* ═══════════════════════════════════
            FOOTER
-           ═══════════════════════════════ */
+           ═══════════════════════════════════ */
         
-        .footer {
+        .ft {
             text-align: center;
-            margin-top: 30px;
-            animation: fadeUp 0.5s ease-out 0.75s both;
+            margin-top: 24px;
+            animation: fadeIn 0.5s ease-out 0.75s both;
         }
         
-        .footer p {
-            font-size: 11px;
-            color: rgba(255,255,255,0.3);
+        .ft p {
+            font-size: 10px;
+            color: rgba(255,255,255,0.2);
         }
         
         .heart {
-            color: var(--accent);
+            color: var(--c1);
             display: inline-block;
-            animation: hb 2.5s ease-in-out infinite;
+            animation: beat 2.5s ease-in-out infinite;
+            will-change: transform;
         }
         
-        @keyframes hb {
+        @keyframes beat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.15); }
         }
         
-        /* ═══════════════════════════════
-           MOBILE FIRST
-           ═══════════════════════════════ */
+        /* ═══════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════ */
         
-        /* Маленькие телефоны (iPhone SE и тд) */
+        /* Очень маленькие экраны */
         @media (max-height: 700px) {
-            .wrap { padding: 20px 16px 20px; }
-            .profile { margin-bottom: 20px; }
-            .ava-wrap { width: 80px; height: 80px; margin-bottom: 12px; }
-            .ava-img { width: 80px; height: 80px; }
+            .container { padding: 20px 16px; }
+            .profile { margin-bottom: 18px; }
+            .ava-box { width: 75px; height: 75px; margin-bottom: 10px; }
+            .ring { inset: -2px; }
+            .ava { width: 75px; height: 75px; }
             .name { font-size: 22px; }
-            .bait { margin-bottom: 16px; }
+            .bait { margin-bottom: 14px; }
             .bait-title { font-size: 16px; margin-bottom: 10px; }
-            .bait-item { padding: 10px 12px; font-size: 13px; }
-            .main-btn { padding: 14px 16px; }
-            .btn-icon { width: 40px; height: 40px; font-size: 18px; }
-            .btn-title { font-size: 14px; }
-            .footer { margin-top: 20px; }
+            .item { padding: 9px 11px; font-size: 12px; }
+            .arrows { margin-bottom: 8px; }
+            .btn { padding: 13px 14px; }
+            .icon { width: 38px; height: 38px; font-size: 18px; }
+            .title { font-size: 14px; }
+            .ft { margin-top: 16px; }
         }
         
-        /* Обычные телефоны */
-        @media (max-width: 500px) {
-            .wrap { padding: 30px 16px 30px; }
-            .name { font-size: 24px; }
-            .bait-title { font-size: 17px; }
-        }
-        
-        /* Планшеты и десктоп */
+        /* Планшеты и больше */
         @media (min-width: 768px) {
-            .wrap { padding: 60px 20px; }
-            .ava-wrap { width: 110px; height: 110px; }
-            .ava-img { width: 110px; height: 110px; }
-            .name { font-size: 32px; }
+            .container { padding: 40px 20px; }
+            .ava-box { width: 100px; height: 100px; }
+            .ava { width: 100px; height: 100px; }
+            .name { font-size: 30px; }
+            .bait-title { font-size: 20px; }
         }
         
-        /* Убираем скроллбар на мобиле */
+        /* Убираем скроллбар */
+        ::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Отключаем лишнее на мобиле */
         @media (max-width: 768px) {
-            ::-webkit-scrollbar { display: none; }
-            body { -ms-overflow-style: none; scrollbar-width: none; }
+            * { 
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                user-select: none;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ═══════════════════════════════════════
-         GIF ФОН
-         
-         Загрузи файл bg.gif в репозиторий GitHub
-         рядом с index.html
-         
-         Рекомендации по GIF:
-         • Размер файла: до 5 МБ (иначе долго грузится)
-         • Разрешение: 720x1280 или 1080x1920
-         • Тёмная гифка лучше (текст читается)
-         
-         Где взять красивые GIF:
-         • giphy.com (ищи "anime dark background")
-         • tenor.com
-         • pinterest (скачай GIF)
-         ═══════════════════════════════════════ -->
+    <!-- BG -->
+    <div class="bg"></div>
+    <div class="grid"></div>
     
-    <div class="bg-gif">
-        <img src="bg.gif" alt="">
+    <!-- Частицы — ТОЛЬКО 5 -->
+    <div class="particles">
+        <div class="p p1"></div>
+        <div class="p p2"></div>
+        <div class="p p3"></div>
+        <div class="p p4"></div>
+        <div class="p p5"></div>
     </div>
-    <div class="bg-overlay"></div>
 
-    <div class="wrap">
+    <div class="container">
         
         <!-- PROFILE -->
         <div class="profile">
-            <div class="ava-wrap">
-                <div class="ava-ring"></div>
+            <div class="ava-box">
+                <div class="ring"></div>
                 <!-- 
                     АВАТАРКА
-                    Загрузи avatar.jpg в репозиторий GitHub
-                    Любой размер — автоматически обрежется в круг
+                    Загрузи avatar.jpg в GitHub
                 -->
-                <img class="ava-img" src="avatar.jpg" alt="animeclips">
+                <img class="ava" src="avatar.jpg" alt="animeclips">
             </div>
             
             <h1 class="name">ANIMECLIPS</h1>
-            <p class="tag">@animeclips</p>
-            <p class="bio">Аниме клипы ⚡ Лучшие моменты 🔥</p>
+            <p class="handle">@animeclips</p>
+            <p class="desc">Аниме клипы ⚡ Лучшие моменты 🔥</p>
         </div>
         
         <!-- BAIT -->
@@ -486,44 +533,43 @@
                 Хочешь увидеть <span class="hl">больше?</span> 👀
             </h2>
             
-            <div class="bait-items">
-                <div class="bait-item">
-                    <span class="em">🎬</span>
-                    Продолжения лучших моментов
+            <div class="items">
+                <div class="item">
+                    <span class="e">🎬</span>
+                    <span>Продолжения лучших моментов</span>
                 </div>
-                <div class="bait-item">
-                    <span class="em">🔥</span>
-                    Эксклюзивный контент
+                <div class="item">
+                    <span class="e">🔥</span>
+                    <span>Эксклюзивный контент</span>
                 </div>
-                <div class="bait-item">
-                    <span class="em">🚫</span>
-                    То что не смог выложить на канал
+                <div class="item">
+                    <span class="e">🚫</span>
+                    <span>То что не смог выложить на канал</span>
                 </div>
             </div>
         </div>
         
         <!-- ARROWS -->
         <div class="arrows">
-            <span class="arr">⬇</span>
-            <span class="arr">⬇</span>
-            <span class="arr">⬇</span>
+            <span class="a">⬇</span>
+            <span class="a">⬇</span>
+            <span class="a">⬇</span>
         </div>
         
-        <!-- MAIN BUTTON -->
+        <!-- BUTTON -->
         <!-- ЗАМЕНИ href="..." НА СВОЮ ССЫЛКУ -->
-        <a href="https://youtube.com/@ComeHuma" target="_blank" class="main-btn">
-            <div class="pulse"></div>
-            <div class="btn-badge">★ ЖМИИ</div>
-            <div class="btn-icon">▶️</div>
-            <div class="btn-info">
-                <div class="btn-title">Смотреть на YouTube</div>
-                <div class="btn-sub">Нажми чтобы перейти</div>
+        <a href="https://youtube.com/@ComeHuma" class="btn">
+            <div class="badge">★ ЖМИИ</div>
+            <div class="icon">▶️</div>
+            <div class="info">
+                <div class="title">Смотреть на YouTube</div>
+                <div class="sub">Нажми чтобы перейти</div>
             </div>
-            <span class="btn-go">→</span>
+            <span class="go">→</span>
         </a>
         
         <!-- Footer -->
-        <div class="footer">
+        <div class="ft">
             <p>made with <span class="heart">❤️</span> animeclips</p>
         </div>
         
