@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ANIMECLIPS | Переходник</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
@@ -15,87 +15,59 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --bg: #050508;
-            --card: rgba(255,255,255,0.04);
             --accent: #e73c7e;
             --accent2: #23a6d5;
-            --accent3: #8b5cf6;
             --text: #fff;
-            --dim: #999;
-            --muted: #555;
-            --border: rgba(255,255,255,0.06);
+            --dim: #ccc;
+            --muted: #888;
+        }
+        
+        html, body {
+            height: 100%;
         }
         
         body {
             font-family: 'Outfit', sans-serif;
-            background: var(--bg);
             color: var(--text);
             min-height: 100vh;
+            min-height: 100dvh;
             overflow-x: hidden;
+            background: #000;
         }
         
         /* ═══════════════════════════════
-           BG — ОПТИМИЗИРОВАНО
+           GIF ФОН — РАСТЯГИВАЕТСЯ
+           БЕЗ ЧЁРНЫХ ПОЛОС
            ═══════════════════════════════ */
         
-        .bg {
+        .bg-gif {
             position: fixed;
-            inset: 0;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
             overflow: hidden;
         }
         
-        /* Градиентные пятна БЕЗ blur — просто большие */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.07;
-            animation: drift 25s ease-in-out infinite;
+        .bg-gif img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
         }
         
-        .orb-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-        }
-        
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent2) 0%, transparent 70%);
-            bottom: -150px;
-            left: -200px;
-            animation-delay: -10s;
-        }
-        
-        .orb-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, var(--accent3) 0%, transparent 70%);
-            top: 45%;
-            left: 35%;
-            animation-delay: -18s;
-        }
-        
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(25px, -20px); }
-            66% { transform: translate(-15px, 15px); }
-        }
-        
-        /* Сетка */
-        .grid {
+        /* Затемнение поверх GIF чтобы текст читался */
+        .bg-overlay {
             position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none;
-            z-index: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Можно менять прозрачность: 0.5 = 50%, 0.7 = 70% и тд */
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
         }
         
         /* ═══════════════════════════════
@@ -104,14 +76,17 @@
         
         .wrap {
             position: relative;
-            z-index: 1;
-            max-width: 440px;
+            z-index: 2;
+            max-width: 420px;
+            width: 100%;
             margin: 0 auto;
-            padding: 50px 20px 60px;
+            padding: 40px 20px 40px;
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
         
         /* ═══════════════════════════════
@@ -120,7 +95,7 @@
         
         .profile {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             animation: fadeDown 0.7s ease-out;
         }
         
@@ -132,10 +107,12 @@
         .ava-wrap {
             position: relative;
             display: inline-block;
-            margin-bottom: 22px;
+            margin-bottom: 18px;
+            width: 100px;
+            height: 100px;
         }
         
-        /* Кольцо вокруг аватарки — ЛЁГКОЕ */
+        /* Кольцо */
         .ava-ring {
             position: absolute;
             inset: -4px;
@@ -143,7 +120,7 @@
             border: 3px solid transparent;
             border-top-color: var(--accent);
             border-right-color: var(--accent2);
-            border-bottom-color: var(--accent3);
+            border-bottom-color: #8b5cf6;
             border-left-color: var(--accent);
             animation: spin 3s linear infinite;
         }
@@ -152,68 +129,60 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Эмодзи-аватарка */
-        .ava {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 44px;
-            z-index: 1;
-        }
-        
-        /* Настоящая аватарка (картинка) */
+        /* АВАТАРКА — РАБОТАЕТ С ЛЮБЫМ РАЗМЕРОМ */
         .ava-img {
-            position: relative;
             width: 100px;
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            z-index: 1;
+            object-position: center;
+            display: block;
+            border: 3px solid rgba(0,0,0,0.5);
         }
         
         .name {
-            font-size: 30px;
+            font-size: 28px;
             font-weight: 900;
             letter-spacing: -0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         
         .tag {
             font-size: 14px;
             font-weight: 600;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
         }
         
         .bio {
             font-size: 13px;
             color: var(--dim);
-            line-height: 1.6;
+            line-height: 1.5;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
         }
         
         /* ═══════════════════════════════
-           BAIT SECTION — БАЙТ ТЕКСТ
+           BAIT
            ═══════════════════════════════ */
         
         .bait {
             text-align: center;
-            margin-bottom: 30px;
-            animation: fadeDown 0.7s ease-out 0.2s both;
+            margin-bottom: 24px;
+            width: 100%;
+            animation: fadeDown 0.7s ease-out 0.15s both;
         }
         
         .bait-title {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
             margin-bottom: 14px;
             line-height: 1.4;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
         
-        .bait-title .highlight {
+        .bait-title .hl {
             background: linear-gradient(135deg, var(--accent), var(--accent2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -223,64 +192,69 @@
         .bait-items {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            width: 100%;
         }
         
         .bait-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: var(--card);
-            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
-            padding: 12px 16px;
+            padding: 12px 14px;
             font-size: 14px;
             font-weight: 600;
             color: var(--dim);
+            text-align: left;
             animation: fadeUp 0.5s ease-out both;
         }
         
-        .bait-item:nth-child(1) { animation-delay: 0.3s; }
-        .bait-item:nth-child(2) { animation-delay: 0.4s; }
-        .bait-item:nth-child(3) { animation-delay: 0.5s; }
+        .bait-item:nth-child(1) { animation-delay: 0.25s; }
+        .bait-item:nth-child(2) { animation-delay: 0.35s; }
+        .bait-item:nth-child(3) { animation-delay: 0.45s; }
         
-        .bait-item .emoji {
+        .bait-item .em {
             font-size: 20px;
             flex-shrink: 0;
+            width: 28px;
+            text-align: center;
         }
         
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         /* ═══════════════════════════════
-           ARROWS — СТРЕЛКИ ВНИЗ
+           ARROWS
            ═══════════════════════════════ */
         
         .arrows {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 18px;
-            animation: fadeUp 0.5s ease-out 0.6s both;
+            margin-bottom: 14px;
+            gap: 0;
+            animation: fadeUp 0.5s ease-out 0.55s both;
         }
         
-        .arrow {
-            font-size: 24px;
+        .arr {
+            font-size: 22px;
+            line-height: 0.8;
             color: var(--accent);
             animation: bounce 1.5s ease-in-out infinite;
-            line-height: 1;
+            text-shadow: 0 0 10px rgba(231,60,126,0.4);
         }
         
-        .arrow:nth-child(1) { animation-delay: 0s; opacity: 0.4; }
-        .arrow:nth-child(2) { animation-delay: 0.15s; opacity: 0.6; }
-        .arrow:nth-child(3) { animation-delay: 0.3s; opacity: 1; }
+        .arr:nth-child(1) { opacity: 0.35; animation-delay: 0s; }
+        .arr:nth-child(2) { opacity: 0.6; animation-delay: 0.12s; }
+        .arr:nth-child(3) { opacity: 1; animation-delay: 0.24s; }
         
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
+            50% { transform: translateY(5px); }
         }
         
         /* ═══════════════════════════════
@@ -290,11 +264,11 @@
         .main-btn {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             width: 100%;
-            padding: 18px 22px;
-            background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(255,59,92,0.05));
-            border: 1px solid rgba(255,0,0,0.25);
+            padding: 16px 18px;
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid rgba(255, 0, 0, 0.3);
             border-radius: 16px;
             text-decoration: none;
             color: var(--text);
@@ -302,22 +276,22 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            animation: fadeUp 0.5s ease-out 0.7s both;
+            animation: fadeUp 0.5s ease-out 0.65s both;
         }
         
         .main-btn::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
             transform: translateX(-100%);
             transition: transform 0.5s;
         }
         
         .main-btn:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255,0,0,0.45);
-            box-shadow: 0 6px 20px rgba(255,0,0,0.12);
+            transform: translateY(-2px);
+            border-color: rgba(255,0,0,0.5);
+            background: rgba(255, 0, 0, 0.2);
         }
         
         .main-btn:hover::after {
@@ -326,6 +300,21 @@
         
         .main-btn:active {
             transform: translateY(0) scale(0.98);
+        }
+        
+        /* Пульсация */
+        .pulse {
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            border: 2px solid rgba(255,0,0,0.25);
+            animation: pulseAnim 2s ease-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes pulseAnim {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.03); opacity: 0; }
         }
         
         .btn-badge {
@@ -338,60 +327,45 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 4px 10px;
-            border-radius: 0 0 8px 8px;
+            padding: 3px 8px;
+            border-radius: 0 0 6px 6px;
         }
         
         .btn-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 13px;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
             background: linear-gradient(135deg, #FF0000, #CC0000);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 22px;
             flex-shrink: 0;
         }
         
         .btn-info { flex: 1; }
         
         .btn-title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 800;
         }
         
         .btn-sub {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--muted);
             margin-top: 2px;
         }
         
-        .btn-arrow {
-            font-size: 20px;
+        .btn-go {
             color: var(--muted);
+            font-size: 18px;
             transition: transform 0.3s, color 0.3s;
             flex-shrink: 0;
         }
         
-        .main-btn:hover .btn-arrow {
-            transform: translateX(5px);
-            color: var(--dim);
-        }
-        
-        /* Пульсация кнопки */
-        .pulse-ring {
-            position: absolute;
-            inset: -2px;
-            border-radius: 18px;
-            border: 2px solid rgba(255,0,0,0.3);
-            animation: pulseRing 2s ease-out infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes pulseRing {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.04); opacity: 0; }
+        .main-btn:hover .btn-go {
+            transform: translateX(4px);
+            color: #fff;
         }
         
         /* ═══════════════════════════════
@@ -400,111 +374,104 @@
         
         .footer {
             text-align: center;
-            margin-top: auto;
-            padding-top: 40px;
-            animation: fadeUp 0.5s ease-out 0.8s both;
+            margin-top: 30px;
+            animation: fadeUp 0.5s ease-out 0.75s both;
         }
         
         .footer p {
             font-size: 11px;
-            color: var(--muted);
+            color: rgba(255,255,255,0.3);
         }
         
         .heart {
             color: var(--accent);
             display: inline-block;
-            animation: heartbeat 2.5s ease-in-out infinite;
+            animation: hb 2.5s ease-in-out infinite;
         }
         
-        @keyframes heartbeat {
+        @keyframes hb {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
         }
         
         /* ═══════════════════════════════
-           PARTICLES — ЛЁГКИЕ (8 штук)
+           MOBILE FIRST
            ═══════════════════════════════ */
         
-        .dots {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
+        /* Маленькие телефоны (iPhone SE и тд) */
+        @media (max-height: 700px) {
+            .wrap { padding: 20px 16px 20px; }
+            .profile { margin-bottom: 20px; }
+            .ava-wrap { width: 80px; height: 80px; margin-bottom: 12px; }
+            .ava-img { width: 80px; height: 80px; }
+            .name { font-size: 22px; }
+            .bait { margin-bottom: 16px; }
+            .bait-title { font-size: 16px; margin-bottom: 10px; }
+            .bait-item { padding: 10px 12px; font-size: 13px; }
+            .main-btn { padding: 14px 16px; }
+            .btn-icon { width: 40px; height: 40px; font-size: 18px; }
+            .btn-title { font-size: 14px; }
+            .footer { margin-top: 20px; }
         }
         
-        .dot {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            border-radius: 50%;
-            opacity: 0;
-            will-change: transform;
-            animation: rise 12s linear infinite;
-        }
-        
-        @keyframes rise {
-            0% { opacity: 0; transform: translateY(100vh); }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
-            100% { opacity: 0; transform: translateY(-5vh); }
-        }
-        
-        /* ═══════════════════════════════
-           MOBILE
-           ═══════════════════════════════ */
-        
+        /* Обычные телефоны */
         @media (max-width: 500px) {
-            .wrap { padding: 35px 16px 50px; }
+            .wrap { padding: 30px 16px 30px; }
             .name { font-size: 24px; }
-            .ava, .ava-img { width: 85px; height: 85px; }
-            .ava { font-size: 36px; }
             .bait-title { font-size: 17px; }
-            .main-btn { padding: 16px 18px; }
-            .btn-icon { width: 42px; height: 42px; font-size: 20px; }
-            .btn-title { font-size: 15px; }
         }
         
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+        /* Планшеты и десктоп */
+        @media (min-width: 768px) {
+            .wrap { padding: 60px 20px; }
+            .ava-wrap { width: 110px; height: 110px; }
+            .ava-img { width: 110px; height: 110px; }
+            .name { font-size: 32px; }
+        }
+        
+        /* Убираем скроллбар на мобиле */
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar { display: none; }
+            body { -ms-overflow-style: none; scrollbar-width: none; }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- BG -->
-    <div class="bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+    <!-- ═══════════════════════════════════════
+         GIF ФОН
+         
+         Загрузи файл bg.gif в репозиторий GitHub
+         рядом с index.html
+         
+         Рекомендации по GIF:
+         • Размер файла: до 5 МБ (иначе долго грузится)
+         • Разрешение: 720x1280 или 1080x1920
+         • Тёмная гифка лучше (текст читается)
+         
+         Где взять красивые GIF:
+         • giphy.com (ищи "anime dark background")
+         • tenor.com
+         • pinterest (скачай GIF)
+         ═══════════════════════════════════════ -->
+    
+    <div class="bg-gif">
+        <img src="bg.gif" alt="">
     </div>
-    <div class="grid"></div>
-    <div class="dots" id="dots"></div>
+    <div class="bg-overlay"></div>
 
     <div class="wrap">
         
-        <!-- ═══════════════════════════════════════
-             PROFILE
-             ═══════════════════════════════════════ -->
+        <!-- PROFILE -->
         <div class="profile">
             <div class="ava-wrap">
                 <div class="ava-ring"></div>
-                
-                <!-- ══════════════════════════════════════════════════
-                     АВАТАРКА
-                     
-                     ВАРИАНТ 1 — Эмодзи (сейчас активен):
-                     <div class="ava">⚡</div>
-                     
-                     ВАРИАНТ 2 — Картинка:
-                     1. Загрузи картинку avatar.jpg в репозиторий
-                     2. Удали строку <div class="ava">⚡</div>
-                     3. Раскомментируй строку ниже:
-                     
-                     <img class="ava-img" src="avatar.jpg" alt="animeclips">
-                     ══════════════════════════════════════════════════ -->
-                
-                <!-- <div class="ava">⚡</div> -->
+                <!-- 
+                    АВАТАРКА
+                    Загрузи avatar.jpg в репозиторий GitHub
+                    Любой размер — автоматически обрежется в круг
+                -->
                 <img class="ava-img" src="avatar.jpg" alt="animeclips">
             </div>
             
@@ -513,54 +480,46 @@
             <p class="bio">Аниме клипы ⚡ Лучшие моменты 🔥</p>
         </div>
         
-        <!-- ═══════════════════════════════════════
-             BAIT — БАЙТ ТЕКСТ
-             ═══════════════════════════════════════ -->
+        <!-- BAIT -->
         <div class="bait">
-            
             <h2 class="bait-title">
-                Хочешь увидеть <span class="highlight">больше?</span> 👀
+                Хочешь увидеть <span class="hl">больше?</span> 👀
             </h2>
             
             <div class="bait-items">
                 <div class="bait-item">
-                    <span class="emoji">🎬</span>
+                    <span class="em">🎬</span>
                     Продолжения лучших моментов
                 </div>
                 <div class="bait-item">
-                    <span class="emoji">🔥</span>
+                    <span class="em">🔥</span>
                     Эксклюзивный контент
                 </div>
                 <div class="bait-item">
-                    <span class="emoji">🚫</span>
+                    <span class="em">🚫</span>
                     То что не смог выложить на канал
                 </div>
             </div>
         </div>
         
-        <!-- ═══════════════════════════════════════
-             ARROWS — СТРЕЛКИ
-             ═══════════════════════════════════════ -->
+        <!-- ARROWS -->
         <div class="arrows">
-            <span class="arrow">⬇</span>
-            <span class="arrow">⬇</span>
-            <span class="arrow">⬇</span>
+            <span class="arr">⬇</span>
+            <span class="arr">⬇</span>
+            <span class="arr">⬇</span>
         </div>
         
-        <!-- ═══════════════════════════════════════
-             MAIN BUTTON — ГЛАВНАЯ КНОПКА
-             
-             ЗАМЕНИ href="..." НА СВОЮ ССЫЛКУ
-             ═══════════════════════════════════════ -->
+        <!-- MAIN BUTTON -->
+        <!-- ЗАМЕНИ href="..." НА СВОЮ ССЫЛКУ -->
         <a href="https://youtube.com/@ComeHuma" target="_blank" class="main-btn">
-            <div class="pulse-ring"></div>
+            <div class="pulse"></div>
             <div class="btn-badge">★ ЖМИИ</div>
             <div class="btn-icon">▶️</div>
             <div class="btn-info">
                 <div class="btn-title">Смотреть на YouTube</div>
-                <div class="btn-sub">Нажми чтобы перейти →</div>
+                <div class="btn-sub">Нажми чтобы перейти</div>
             </div>
-            <span class="btn-arrow">→</span>
+            <span class="btn-go">→</span>
         </a>
         
         <!-- Footer -->
@@ -569,23 +528,6 @@
         </div>
         
     </div>
-
-    <script>
-        // 8 лёгких частиц
-        !function(){
-            var c=document.getElementById('dots'),
-                cols=['#e73c7e','#23a6d5','#8b5cf6','#fff'];
-            for(var i=0;i<8;i++){
-                var d=document.createElement('div');
-                d.className='dot';
-                d.style.left=Math.random()*100+'%';
-                d.style.animationDelay=Math.random()*12+'s';
-                d.style.animationDuration=(10+Math.random()*8)+'s';
-                d.style.background=cols[i%4];
-                c.appendChild(d);
-            }
-        }();
-    </script>
 
 </body>
 </html>
