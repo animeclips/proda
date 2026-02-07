@@ -33,85 +33,23 @@
             overflow-x: hidden;
         }
         
-        /* ═══════════════════════════════════
-           ФОН
-           ═══════════════════════════════════ */
-        
         .bg {
             position: fixed;
             inset: 0;
             z-index: 0;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 8, 68, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(108, 53, 212, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(168, 70, 160, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(255, 8, 68, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(108, 53, 212, 0.2) 0%, transparent 50%),
                 linear-gradient(135deg, #0a0a0f 0%, #110a1a 50%, #0f0a15 100%);
-            animation: bgShift 25s ease-in-out infinite;
         }
-        
-        @keyframes bgShift {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.02) rotate(0.5deg); }
-        }
-        
-        .grid {
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.008) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.008) 1px, transparent 1px);
-            background-size: 100px 100px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-        
-        .particles {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .p {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            opacity: 0;
-        }
-        
-        .p1 { background: var(--pink); left: 10%; animation: rise1 18s linear infinite; }
-        .p2 { background: var(--orange); left: 30%; animation: rise2 20s linear infinite 3s; }
-        .p3 { background: var(--purple); left: 50%; animation: rise1 22s linear infinite 6s; }
-        .p4 { background: var(--blue); left: 70%; animation: rise2 19s linear infinite 9s; }
-        .p5 { background: var(--pink); left: 90%; animation: rise1 21s linear infinite 12s; }
-        
-        @keyframes rise1 {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { opacity: 0; transform: translateY(-10vh) translateX(30px) scale(1.5); }
-        }
-        
-        @keyframes rise2 {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { opacity: 0; transform: translateY(-10vh) translateX(-30px) scale(1.5); }
-        }
-        
-        /* ═══════════════════════════════════
-           LAYOUT
-           ═══════════════════════════════════ */
         
         .container {
             position: relative;
             z-index: 1;
-            max-width: 420px;
+            max-width: 400px;
             width: 100%;
             margin: 0 auto;
-            padding: 30px 18px;
+            padding: 16px 16px 20px;
             min-height: 100vh;
             min-height: 100dvh;
             display: flex;
@@ -120,32 +58,29 @@
             justify-content: center;
         }
         
-        /* ═══════════════════════════════════
-           PROFILE
-           ═══════════════════════════════════ */
-        
+        /* PROFILE — КОМПАКТНЫЙ */
         .profile {
             text-align: center;
-            margin-bottom: 28px;
-            animation: fadeIn 0.6s ease-out;
+            margin-bottom: 14px;
+            animation: fadeIn 0.5s ease-out;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-15px); }
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .ava-box {
             position: relative;
             display: inline-block;
-            width: 95px;
-            height: 95px;
-            margin-bottom: 16px;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 10px;
         }
         
         .ring {
             position: absolute;
-            inset: -3px;
+            inset: -2px;
             border-radius: 50%;
             background: conic-gradient(var(--pink), var(--orange), var(--purple), var(--blue), var(--pink));
             animation: rotate 4s linear infinite;
@@ -157,60 +92,33 @@
         
         .ava {
             position: relative;
-            width: 95px;
-            height: 95px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #0a0a0f;
+            border: 2px solid #0a0a0f;
             display: block;
             z-index: 1;
         }
         
-        /* ИМЯ — КРУПНОЕ */
         .name {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 36px;
-            font-weight: 900;
+            font-size: 28px;
             letter-spacing: 2px;
-            margin-bottom: 6px;
+            margin-bottom: 2px;
             background: linear-gradient(135deg, #fff 30%, var(--pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-transform: uppercase;
-            text-shadow: 0 0 30px rgba(255,8,68,0.3);
         }
         
-        /* НИК — ЯРКИЙ */
-        .handle {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--pink);
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px var(--pink);
-        }
-        
-        /* ОПИСАНИЕ — СТИЛЬНОЕ С РАЗДЕЛИТЕЛЯМИ */
         .tagline {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 15px;
+            gap: 6px;
+            font-size: 12px;
             font-weight: 700;
-            line-height: 1.6;
-            flex-wrap: wrap;
-        }
-        
-        .tagline .icon {
-            font-size: 18px;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-        
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-4px) rotate(5deg); }
         }
         
         .tagline .word {
@@ -218,33 +126,25 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 800;
-            font-size: 16px;
         }
         
         .tagline .dot {
             color: var(--purple);
-            font-weight: 900;
-            opacity: 0.7;
-            font-size: 18px;
+            opacity: 0.6;
         }
         
-        /* ═══════════════════════════════════
-           BAIT
-           ═══════════════════════════════════ */
-        
+        /* BAIT — КОМПАКТНЫЙ */
         .bait {
             width: 100%;
-            margin-bottom: 22px;
-            animation: fadeIn 0.6s ease-out 0.15s both;
+            margin-bottom: 12px;
+            animation: fadeIn 0.5s ease-out 0.1s both;
         }
         
         .bait-title {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 800;
             text-align: center;
-            margin-bottom: 14px;
-            line-height: 1.4;
+            margin-bottom: 10px;
         }
         
         .bait-title .big {
@@ -252,293 +152,235 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 24px;
-            font-weight: 900;
-            display: inline-block;
+            font-size: 18px;
         }
         
         .cards {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 6px;
         }
         
-        /* КАРТОЧКИ — СТИЛЬНЫЕ */
         .card {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 14px 15px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
-            animation: slideUp 0.4s ease-out both;
-            transition: all 0.3s ease;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            animation: slideUp 0.3s ease-out both;
         }
         
-        .card:nth-child(1) { animation-delay: 0.25s; }
-        .card:nth-child(2) { animation-delay: 0.35s; }
-        .card:nth-child(3) { animation-delay: 0.45s; }
+        .card:nth-child(1) { animation-delay: 0.15s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.25s; }
+        .card:nth-child(4) { animation-delay: 0.3s; }
         
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(12px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        @media (hover: hover) {
-            .card:hover {
-                background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
-                border-color: rgba(255,255,255,0.15);
-                transform: translateX(4px);
-            }
-        }
-        
         .card .emoji {
-            font-size: 22px;
+            font-size: 18px;
             flex-shrink: 0;
-            width: 28px;
-            text-align: center;
-            filter: drop-shadow(0 0 10px currentColor);
         }
         
         .card .text {
             flex: 1;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
-            color: #e0e0e0;
-            line-height: 1.5;
+            color: #ddd;
+            line-height: 1.4;
         }
         
-        /* Выделяем ключевые слова */
         .card .accent {
             color: var(--orange);
             font-weight: 800;
         }
         
-        /* ═══════════════════════════════════
-           ARROWS
-           ═══════════════════════════════════ */
+        .card .fire {
+            color: var(--pink);
+            font-weight: 800;
+        }
         
+        /* ARROWS — КОМПАКТНЫЕ */
         .arrows {
             display: flex;
-            flex-direction: column;
             gap: 0;
-            margin-bottom: 14px;
-            animation: fadeIn 0.5s ease-out 0.55s both;
+            margin-bottom: 10px;
+            animation: fadeIn 0.4s ease-out 0.35s both;
         }
         
         .arrow {
-            font-size: 24px;
-            line-height: 0.7;
+            font-size: 18px;
+            line-height: 0.6;
             color: var(--pink);
             animation: bounce 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 8px var(--pink));
         }
         
-        .arrow:nth-child(1) { opacity: 0.3; animation-delay: 0s; }
-        .arrow:nth-child(2) { opacity: 0.6; animation-delay: 0.12s; }
-        .arrow:nth-child(3) { opacity: 1; animation-delay: 0.24s; }
+        .arrow:nth-child(1) { opacity: 0.3; }
+        .arrow:nth-child(2) { opacity: 0.6; animation-delay: 0.1s; }
+        .arrow:nth-child(3) { opacity: 1; animation-delay: 0.2s; }
         
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
+            50% { transform: translateY(4px); }
         }
         
-        /* ═══════════════════════════════════
-           BUTTON
-           ═══════════════════════════════════ */
-        
+        /* BUTTON — ЯРКАЯ */
         .cta {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             width: 100%;
-            padding: 17px 18px;
-            background: linear-gradient(135deg, rgba(255,0,0,0.18), rgba(255,0,0,0.1));
-            border: 2px solid rgba(255,0,0,0.35);
-            border-radius: 16px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, rgba(255,0,0,0.2), rgba(255,0,0,0.1));
+            border: 2px solid rgba(255,0,0,0.4);
+            border-radius: 14px;
             text-decoration: none;
             color: #fff;
             position: relative;
             overflow: hidden;
             transition: all 0.25s ease;
-            animation: fadeIn 0.5s ease-out 0.65s both;
+            animation: fadeIn 0.5s ease-out 0.4s both;
         }
         
         .cta:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
         
-        @media (hover: hover) {
-            .cta:hover {
-                transform: translateY(-3px);
-                border-color: rgba(255,0,0,0.6);
-                background: linear-gradient(135deg, rgba(255,0,0,0.25), rgba(255,0,0,0.15));
-                box-shadow: 0 10px 30px rgba(255,0,0,0.2);
-            }
-        }
-        
-        /* Пульсация */
         .cta::before {
             content: '';
             position: absolute;
-            inset: -3px;
-            border-radius: 18px;
+            inset: -2px;
+            border-radius: 16px;
             border: 2px solid rgba(255,0,0,0.3);
-            animation: pulsate 2.5s ease-out infinite;
+            animation: pulsate 2s ease-out infinite;
             pointer-events: none;
         }
         
         @keyframes pulsate {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.05); opacity: 0; }
-        }
-        
-        /* Блеск */
-        .cta::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.6s;
-        }
-        
-        @media (hover: hover) {
-            .cta:hover::after {
-                left: 100%;
-            }
+            100% { transform: scale(1.04); opacity: 0; }
         }
         
         .badge {
             position: absolute;
             top: -1px;
-            right: 14px;
-            background: linear-gradient(135deg, #ff0000, #d00000);
+            right: 12px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
             color: #fff;
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 9px;
-            border-radius: 0 0 7px 7px;
-            box-shadow: 0 3px 10px rgba(255,0,0,0.4);
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 0 0 6px 6px;
         }
         
         .btn-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 13px;
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
             background: linear-gradient(135deg, #ff0000, #cc0000);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(255,0,0,0.3);
         }
         
         .btn-text { flex: 1; }
         
         .btn-title {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
         
         .btn-sub {
-            font-size: 12px;
+            font-size: 11px;
             color: #bbb;
             font-weight: 600;
         }
         
         .btn-arrow {
-            font-size: 20px;
+            font-size: 18px;
             color: #ccc;
-            flex-shrink: 0;
-            transition: all 0.25s ease;
+            animation: arrowPulse 1.5s ease-in-out infinite;
         }
         
-        @media (hover: hover) {
-            .cta:hover .btn-arrow {
-                transform: translateX(5px);
-                color: #fff;
-            }
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateX(0); opacity: 0.7; }
+            50% { transform: translateX(4px); opacity: 1; }
         }
         
-        /* ═══════════════════════════════════
-           FOOTER
-           ═══════════════════════════════════ */
-        
+        /* FOOTER — МИНИМАЛЬНЫЙ */
         .footer {
             text-align: center;
-            margin-top: 28px;
-            animation: fadeIn 0.5s ease-out 0.75s both;
+            margin-top: 14px;
+            animation: fadeIn 0.5s ease-out 0.5s both;
         }
         
         .footer p {
-            font-size: 11px;
-            color: rgba(255,255,255,0.25);
-            font-weight: 600;
+            font-size: 9px;
+            color: rgba(255,255,255,0.2);
         }
         
         .heart {
             color: var(--pink);
-            display: inline-block;
-            animation: heartbeat 2.5s ease-in-out infinite;
+            animation: heartbeat 2s ease-in-out infinite;
         }
         
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.15); }
         }
         
-        /* ═══════════════════════════════════
-           RESPONSIVE
-           ═══════════════════════════════════ */
+        /* RESPONSIVE — ВСЁ ВИДНО СРАЗУ */
+        @media (max-height: 650px) {
+            .container { padding: 12px 14px 16px; }
+            .ava-box { width: 55px; height: 55px; margin-bottom: 6px; }
+            .ava { width: 55px; height: 55px; }
+            .name { font-size: 22px; }
+            .tagline { font-size: 10px; }
+            .bait { margin-bottom: 8px; }
+            .bait-title { font-size: 14px; margin-bottom: 6px; }
+            .bait-title .big { font-size: 15px; }
+            .cards { gap: 4px; }
+            .card { padding: 8px 10px; }
+            .card .emoji { font-size: 14px; }
+            .card .text { font-size: 10px; }
+            .arrows { margin-bottom: 6px; }
+            .arrow { font-size: 14px; }
+            .cta { padding: 12px 14px; }
+            .btn-icon { width: 36px; height: 36px; font-size: 16px; }
+            .btn-title { font-size: 13px; }
+            .btn-sub { font-size: 10px; }
+            .footer { margin-top: 10px; }
+        }
         
-        @media (max-height: 700px) {
-            .container { padding: 20px 16px; }
+        @media (min-height: 800px) {
+            .container { padding: 24px 18px 28px; }
             .profile { margin-bottom: 18px; }
-            .ava-box { width: 80px; height: 80px; margin-bottom: 12px; }
+            .ava-box { width: 80px; height: 80px; }
             .ava { width: 80px; height: 80px; }
-            .name { font-size: 28px; }
-            .tagline { font-size: 13px; }
-            .tagline .word { font-size: 14px; }
+            .name { font-size: 32px; }
             .bait { margin-bottom: 16px; }
-            .bait-title { font-size: 17px; margin-bottom: 10px; }
+            .bait-title { font-size: 18px; }
             .bait-title .big { font-size: 20px; }
-            .card { padding: 11px 12px; }
+            .card { padding: 12px 14px; }
             .card .text { font-size: 13px; }
-            .cta { padding: 14px 15px; }
-            .btn-icon { width: 42px; height: 42px; font-size: 20px; }
-            .btn-title { font-size: 15px; }
-            .footer { margin-top: 18px; }
-        }
-        
-        @media (min-width: 768px) {
-            .container { padding: 40px 20px; }
-            .ava-box { width: 105px; height: 105px; }
-            .ava { width: 105px; height: 105px; }
-            .name { font-size: 42px; }
-            .tagline { font-size: 16px; }
-            .tagline .word { font-size: 17px; }
-            .bait-title { font-size: 22px; }
-            .bait-title .big { font-size: 26px; }
         }
         
         ::-webkit-scrollbar { display: none; }
         body { -ms-overflow-style: none; scrollbar-width: none; }
         
-        @media (max-width: 768px) {
-            * { 
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                user-select: none;
-            }
+        * { 
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
     </style>
 </head>
@@ -546,21 +388,9 @@
 <body>
 
     <div class="bg"></div>
-    <div class="grid"></div>
-    
-    <div class="particles">
-        <div class="p p1"></div>
-        <div class="p p2"></div>
-        <div class="p p3"></div>
-        <div class="p p4"></div>
-        <div class="p p5"></div>
-    </div>
 
     <div class="container">
         
-        <!-- ═══════════════════════════════════
-             PROFILE
-             ═══════════════════════════════════ -->
         <div class="profile">
             <div class="ava-box">
                 <div class="ring"></div>
@@ -568,11 +398,9 @@
             </div>
             
             <h1 class="name">ANIMECLIPS</h1>
-            <p class="handle">@animeclips</p>
             
-            <!-- СТИЛЬНОЕ ОПИСАНИЕ -->
             <div class="tagline">
-                <span class="icon">📖</span>
+                <span>📖</span>
                 <span class="word">Манга</span>
                 <span class="dot">•</span>
                 <span class="word">Манхва</span>
@@ -581,65 +409,61 @@
             </div>
         </div>
         
-        <!-- ═══════════════════════════════════
-             BAIT
-             ═══════════════════════════════════ -->
         <div class="bait">
             <h2 class="bait-title">
-                Хочешь увидеть <span class="big">больше?</span> 👀
+                Хочешь <span class="big">больше?</span> 👀
             </h2>
             
             <div class="cards">
                 <div class="card">
                     <span class="emoji">🎬</span>
                     <div class="text">
-                        <span class="accent">Полный пересказ</span> манхвы целым роликом
+                        <span class="accent">Полноценные длинные ролики</span> вместо частей
                     </div>
                 </div>
                 
                 <div class="card">
                     <span class="emoji">🔥</span>
                     <div class="text">
-                        <span class="accent">Эксклюзивный</span> контент только для вас
+                        <span class="accent">Эксклюзив</span> — контент только для своих
                     </div>
                 </div>
                 
                 <div class="card">
-                    <span class="emoji">🚫</span>
+                    <span class="emoji">⛔</span>
                     <div class="text">
-                        То что <span class="accent">не прошло</span> на основном канале
+                        Пересказы <span class="fire">манги</span>•<span class="fire">манхвы</span> которые <span class="accent">не пропустили</span> 💀
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <span class="emoji">⚡</span>
+                    <div class="text">
+                        <span class="fire">Продолжение</span> пересказа <span class="accent">раньше</span> чем на канале
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- ═══════════════════════════════════
-             ARROWS
-             ═══════════════════════════════════ -->
         <div class="arrows">
             <span class="arrow">⬇</span>
             <span class="arrow">⬇</span>
             <span class="arrow">⬇</span>
         </div>
         
-        <!-- ═══════════════════════════════════
-             BUTTON
-             ═══════════════════════════════════ -->
+        <!-- ЗАМЕНИ href="..." НА СВОЮ ССЫЛКУ -->
         <a href="https://youtube.com/@ComeHuma" class="cta">
             <div class="badge">★ ЖМИ</div>
             <div class="btn-icon">▶️</div>
             <div class="btn-text">
                 <div class="btn-title">Смотреть на YouTube</div>
-                <div class="btn-sub">Нажми чтобы перейти →</div>
+                <div class="btn-sub">Нажми чтобы перейти</div>
             </div>
             <span class="btn-arrow">→</span>
         </a>
         
-        <!-- ═══════════════════════════════════
-             FOOTER
-             ═══════════════════════════════════ -->
         <div class="footer">
-            <p>made with <span class="heart">❤️</span> animeclips</p>
+            <p>made with <span class="heart">❤</span> animeclips</p>
         </div>
         
     </div>
