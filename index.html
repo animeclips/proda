@@ -35,7 +35,6 @@
         
         /* ═══════════════════════════════════
            КРАСИВЫЙ ФОН — ЛЕГКИЙ
-           Mesh gradient + частицы
            ═══════════════════════════════════ */
         
         .bg {
@@ -56,7 +55,6 @@
             50% { transform: scale(1.02) rotate(0.5deg); }
         }
         
-        /* Сетка — очень лёгкая */
         .grid {
             position: fixed;
             inset: 0;
@@ -69,7 +67,6 @@
             opacity: 0.5;
         }
         
-        /* Частицы — ТОЛЬКО 5 штук */
         .particles {
             position: fixed;
             inset: 0;
@@ -184,7 +181,6 @@
             margin-bottom: 14px;
         }
         
-        /* Кольцо — простое */
         .ring {
             position: absolute;
             inset: -3px;
@@ -452,7 +448,6 @@
            RESPONSIVE
            ═══════════════════════════════════ */
         
-        /* Очень маленькие экраны */
         @media (max-height: 700px) {
             .container { padding: 20px 16px; }
             .profile { margin-bottom: 18px; }
@@ -470,7 +465,6 @@
             .ft { margin-top: 16px; }
         }
         
-        /* Планшеты и больше */
         @media (min-width: 768px) {
             .container { padding: 40px 20px; }
             .ava-box { width: 100px; height: 100px; }
@@ -479,11 +473,9 @@
             .bait-title { font-size: 20px; }
         }
         
-        /* Убираем скроллбар */
         ::-webkit-scrollbar { display: none; }
         body { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Отключаем лишнее на мобиле */
         @media (max-width: 768px) {
             * { 
                 -webkit-touch-callout: none;
@@ -496,11 +488,9 @@
 
 <body>
 
-    <!-- BG -->
     <div class="bg"></div>
     <div class="grid"></div>
     
-    <!-- Частицы — ТОЛЬКО 5 -->
     <div class="particles">
         <div class="p p1"></div>
         <div class="p p2"></div>
@@ -515,16 +505,12 @@
         <div class="profile">
             <div class="ava-box">
                 <div class="ring"></div>
-                <!-- 
-                    АВАТАРКА
-                    Загрузи avatar.jpg в GitHub
-                -->
                 <img class="ava" src="avatar.jpg" alt="animeclips">
             </div>
             
             <h1 class="name">ANIMECLIPS</h1>
             <p class="handle">@animeclips</p>
-            <p class="desc">Аниме клипы ⚡ Лучшие моменты 🔥</p>
+            <p class="desc">Пересказ манг|манхв</p>
         </div>
         
         <!-- BAIT -->
@@ -536,7 +522,7 @@
             <div class="items">
                 <div class="item">
                     <span class="e">🎬</span>
-                    <span>Продолжения лучших моментов</span>
+                    <span>Продолжение пересказа манхвы|манги не частями а целым роликом</span>
                 </div>
                 <div class="item">
                     <span class="e">🔥</span>
@@ -557,7 +543,6 @@
         </div>
         
         <!-- BUTTON -->
-        <!-- ЗАМЕНИ href="..." НА СВОЮ ССЫЛКУ -->
         <a href="https://youtube.com/@ComeHuma" class="btn">
             <div class="badge">★ ЖМИИ</div>
             <div class="icon">▶️</div>
