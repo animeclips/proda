@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANIMECLIPS | Все ссылки</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg: #050508;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
+            --accent: #e73c7e;
+            --accent-2: #23a6d5;
+            --accent-3: #8b5cf6;
+            --text: #ffffff;
+            --text-dim: #888;
+            --text-muted: #555;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+        
+        body {
+            font-family: 'Outfit', 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* ══════════════════════════════════
+           BACKGROUND
+           ══════════════════════════════════ */
+        
+        .bg-effects {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.12;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+        
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            top: -150px;
+            right: -150px;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-2);
+            bottom: -100px;
+            left: -150px;
+            animation-delay: -7s;
+        }
+        
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-3);
+            top: 40%;
+            left: 40%;
+            animation-delay: -14s;
+        }
+        
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -30px) scale(1.1); }
+            66% { transform: translate(-30px, 20px) scale(0.9); }
+        }
+        
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+        }
+        
+        /* Anime scan lines */
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* ══════════════════════════════════
+           CONTAINER
+           ══════════════════════════════════ */
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 460px;
+            margin: 0 auto;
+            padding: 50px 20px 60px;
+            min-height: 100vh;
+        }
+        
+        /* ══════════════════════════════════
+           PROFILE
+           ══════════════════════════════════ */
+        
+        .profile {
+            text-align: center;
+            margin-bottom: 45px;
+            animation: fadeDown 0.8s ease-out;
+        }
+        
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .avatar-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+        
+        .avatar-glow {
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--accent),
+                var(--accent-2),
+                var(--accent-3),
+                var(--accent)
+            );
+            animation: ringRotate 4s linear infinite;
+        }
+        
+        @keyframes ringRotate {
+            to { transform: rotate(360deg); }
+        }
+        
+        .avatar-placeholder {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 4px solid var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            z-index: 1;
+        }
+        
+        .avatar-img {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg);
+            z-index: 1;
+        }
+        
+        .profile-name {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .profile-tag {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .profile-desc {
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.7;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        
+        .profile-desc span {
+            color: var(--accent-2);
+            font-weight: 600;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 22px;
+            padding: 18px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .stat-num {
+            font-size: 22px;
+            font-weight: 800;
+        }
+        
+        .stat-lbl {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 3px;
+        }
+        
+        /* ══════════════════════════════════
+           LINKS
+           ══════════════════════════════════ */
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .section-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-top: 22px;
+            margin-bottom: 6px;
+            padding-left: 6px;
+            font-weight: 600;
+        }
+        
+        /* ══════════════════════════════════
+           BUTTON
+           ══════════════════════════════════ */
+        
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: fadeUp 0.5s ease-out both;
+        }
+        
+        .btn:nth-child(1) { animation-delay: 0.05s; }
+        .btn:nth-child(2) { animation-delay: 0.1s; }
+        .btn:nth-child(3) { animation-delay: 0.15s; }
+        .btn:nth-child(4) { animation-delay: 0.2s; }
+        .btn:nth-child(5) { animation-delay: 0.25s; }
+        .btn:nth-child(6) { animation-delay: 0.3s; }
+        .btn:nth-child(7) { animation-delay: 0.35s; }
+        .btn:nth-child(8) { animation-delay: 0.4s; }
+        .btn:nth-child(9) { animation-delay: 0.45s; }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        .btn:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        
+        .btn-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .btn-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .btn-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        
+        .btn-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+        
+        .btn-arrow {
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: transform 0.3s, color 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .btn:hover .btn-arrow {
+            transform: translateX(4px);
+            color: var(--text-dim);
+        }
+        
+        /* ══════════════════════════════════
+           PLATFORM COLORS
+           ══════════════════════════════════ */
+        
+        .yt .btn-icon {
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            box-shadow: 0 4px 12px rgba(255,0,0,0.15);
+        }
+        .yt:hover { background: rgba(255,0,0,0.06); border-color: rgba(255,0,0,0.15); }
+        
+        .tg .btn-icon {
+            background: linear-gradient(135deg, #2AABEE, #229ED9);
+            box-shadow: 0 4px 12px rgba(42,171,238,0.15);
+        }
+        .tg:hover { background: rgba(42,171,238,0.06); border-color: rgba(42,171,238,0.15); }
+        
+        .tt .btn-icon {
+            background: linear-gradient(135deg, #ff3b5c, #00f2ea);
+            box-shadow: 0 4px 12px rgba(255,59,92,0.15);
+        }
+        .tt:hover { background: rgba(255,59,92,0.06); border-color: rgba(255,59,92,0.15); }
+        
+        .ig .btn-icon {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 4px 12px rgba(225,48,108,0.15);
+        }
+        .ig:hover { background: rgba(225,48,108,0.06); border-color: rgba(225,48,108,0.15); }
+        
+        .ds .btn-icon {
+            background: linear-gradient(135deg, #5865F2, #4752C4);
+            box-shadow: 0 4px 12px rgba(88,101,242,0.15);
+        }
+        .ds:hover { background: rgba(88,101,242,0.06); border-color: rgba(88,101,242,0.15); }
+        
+        .vk .btn-icon {
+            background: linear-gradient(135deg, #0077FF, #0066DD);
+            box-shadow: 0 4px 12px rgba(0,119,255,0.15);
+        }
+        .vk:hover { background: rgba(0,119,255,0.06); border-color: rgba(0,119,255,0.15); }
+        
+        .tw .btn-icon {
+            background: linear-gradient(135deg, #9146FF, #7B2FFF);
+            box-shadow: 0 4px 12px rgba(145,70,255,0.15);
+        }
+        .tw:hover { background: rgba(145,70,255,0.06); border-color: rgba(145,70,255,0.15); }
+        
+        .dn .btn-icon {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            box-shadow: 0 4px 12px rgba(255,165,0,0.15);
+        }
+        .dn:hover { background: rgba(255,165,0,0.06); border-color: rgba(255,165,0,0.15); }
+        
+        .other .btn-icon {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+        }
+        .other:hover { background: rgba(99,102,241,0.06); border-color: rgba(99,102,241,0.15); }
+        
+        /* ══════════════════════════════════
+           FEATURED (Выделенная кнопка)
+           ══════════════════════════════════ */
+        
+        .featured {
+            background: linear-gradient(135deg, rgba(255,0,0,0.08), rgba(255,59,92,0.04));
+            border-color: rgba(255,0,0,0.2);
+        }
+        
+        .featured:hover {
+            border-color: rgba(255,0,0,0.35) !important;
+            box-shadow: 0 8px 30px rgba(255,0,0,0.12);
+        }
+        
+        .badge {
+            position: absolute;
+            top: -1px;
+            right: 14px;
+            background: linear-gradient(135deg, var(--accent), #ff6b81);
+            color: white;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        /* ══════════════════════════════════
+           FOOTER
+           ══════════════════════════════════ */
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            animation: fadeUp 0.5s ease-out 0.5s both;
+        }
+        
+        .footer p {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        
+        .heart {
+            color: var(--accent);
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+        
+        /* ══════════════════════════════════
+           PARTICLES
+           ══════════════════════════════════ */
+        
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: rise 10s linear infinite;
+        }
+        
+        @keyframes rise {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            15% { opacity: 0.5; }
+            85% { opacity: 0.5; }
+            100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+        }
+        
+        /* ══════════════════════════════════
+           MOBILE
+           ══════════════════════════════════ */
+        
+        @media (max-width: 500px) {
+            .container { padding: 35px 16px 50px; }
+            .profile-name { font-size: 26px; }
+            .avatar-placeholder, .avatar-img { width: 90px; height: 90px; }
+            .avatar-placeholder { font-size: 38px; }
+            .btn { padding: 13px 15px; }
+            .btn-icon { width: 38px; height: 38px; font-size: 18px; }
+            .stats { gap: 22px; }
+            .stat-num { font-size: 18px; }
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- BG -->
+    <div class="bg-effects">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="scanlines"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        
+        <!-- ════════════════════════════════════════════
+             PROFILE
+             ════════════════════════════════════════════ -->
+        <div class="profile">
+            <div class="avatar-wrap">
+                <div class="avatar-glow"></div>
+                
+                <!-- Аватар: замени на свою картинку -->
+                <!-- <img class="avatar-img" src="avatar.jpg" alt="animeclips"> -->
+                <div class="avatar-placeholder">⚡</div>
+            </div>
+            
+            <h1 class="profile-name">ANIMECLIPS</h1>
+            <p class="profile-tag">@animeclips</p>
+            <p class="profile-desc">
+                Аниме клипы и лучшие моменты ⚡<br>
+                Каждый день новый контент 🔥
+            </p>
+            
+            <div class="stats">
+                <div>
+                    <div class="stat-num">10K+</div>
+                    <div class="stat-lbl">Подписчиков</div>
+                </div>
+                <div>
+                    <div class="stat-num">500+</div>
+                    <div class="stat-lbl">Видео</div>
+                </div>
+                <div>
+                    <div class="stat-num">1M+</div>
+                    <div class="stat-lbl">Просмотров</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ════════════════════════════════════════════
+             ССЫЛКИ — МЕНЯЙ ССЫЛКИ НА СВОИ
+             ════════════════════════════════════════════ -->
+        <div class="links">
+            
+            <div class="section-label">📌 Основное</div>
+            
+            <!-- ▶️ YouTube — ГЛАВНАЯ -->
+            <!-- ЗАМЕНИ href="..." НА ССЫЛКУ КАНАЛА -->
+            <a href="https://youtube.com/@ComeHuma" target="_blank" class="btn yt featured">
+                <div class="badge">★ ОРИГИНАЛ</div>
+                <div class="btn-icon">▶️</div>
+                <div class="btn-info">
+                    <div class="btn-title">YouTube — ComeHuma</div>
+                    <div class="btn-sub">Оригинальный канал</div>
+                </div>
+                <span class="btn-arrow">→</span>
+            </a>
+            
+            <!-- 🎵 TikTok -->
+            <!-- ЗАМЕНИ href="..." НА СВОЙ ТИКТОК -->
+            <a href="https://tiktok.com/@animeclips" target="_blank" class="btn tt">
+                <div class="btn-icon">🎵</div>
+                <div class="btn-info">
+                    <div class="btn-title">TikTok</div>
+                    <div class="btn-sub">Аниме клипы каждый день</div>
+                </div>
+                <span class="btn-arrow">→</span>
+            </a>
+            
+            <!-- ✈️ Telegram -->
+            <!-- ЗАМЕНИ href="..." НА СВОЙ ТЕЛЕГРАМ -->
+            <a href="https://t.me/animeclips" target="_blank" class="btn tg">
+                <div class="btn-icon">✈️</div>
+                <div class="btn-info">
+                    <div class="btn-title">Telegram</div>
+                    <div class="btn-sub">Новости и анонсы</div>
+                </div>
+                <span class="btn-arrow">→</span>
+            </a>
+            
+            <div class="section-label">🌐 Соцсети</div>
+            
+            <!-- 📸 Instagram -->
+            <!-- ЗАМЕНИ ИЛИ УДАЛИ ЕСЛИ НЕ НУЖНО -->
+            <a href="https://instagram.com/animeclips" target="_blank" class="btn ig">
+                <div class="btn-icon">📸</div>
+                <div class="btn-info">
+                    <div class="btn-title">Instagram</div>
+                    <div class="btn-sub">Арты и сторис</div>
+                </div>
+                <span class="btn-arrow">→</span>
+            </a>
+            
+            <!-- 💬 Discord -->
+            <a href="https://discord.gg/animeclips" target="_blank" class="btn ds">
+                <div class="btn-icon">💬</div>
+                <div class="btn-info">
+                    <div class="btn-title">Discord</div>
+                    <div class="btn-sub">Комьюнити</div>
+                </div>
+                <span class="btn-arrow">→</span>
+            </a>
+            
+            <!-- 🔵 VK -->
+            <a href="https://vk.com/animeclips" target="_blank" class="btn vk">
+                <div class="btn-icon">🔵</div>
+                <div class="btn-info">
+                    <div class="btn-title">ВКонтакте</div>
+                    <div class="btn-sub">Паблик</div>
+                </div>
+                <span class="btn-arrow">→</span>
+            </a>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>made with <span class="heart">❤️</span> animeclips</p>
+        </div>
+        
+    </div>
+
+    <script>
+        // Частицы
+        (function() {
+            const c = document.getElementById('particles');
+            const colors = ['#e73c7e','#23a6d5','#8b5cf6','#fff'];
+            for (let i = 0; i < 20; i++) {
+                const d = document.createElement('div');
+                d.className = 'dot';
+                d.style.left = Math.random()*100+'%';
+                d.style.animationDelay = Math.random()*10+'s';
+                d.style.animationDuration = (7+Math.random()*8)+'s';
+                d.style.background = colors[Math.floor(Math.random()*colors.length)];
+                c.appendChild(d);
+            }
+        })();
+        
+        // Ripple при клике
+        document.querySelectorAll('.btn').forEach(b => {
+            b.addEventListener('click', function(e) {
+                const r = document.createElement('div');
+                r.style.cssText = `
+                    position:absolute;border-radius:50%;
+                    background:rgba(255,255,255,0.08);
+                    width:300px;height:300px;
+                    left:${e.offsetX-150}px;top:${e.offsetY-150}px;
+                    animation:rip 0.6s ease-out;pointer-events:none;
+                `;
+                this.appendChild(r);
+                setTimeout(() => r.remove(), 600);
+            });
+        });
+        
+        const s = document.createElement('style');
+        s.textContent = `@keyframes rip{from{transform:scale(0);opacity:1}to{transform:scale(2);opacity:0}}`;
+        document.head.appendChild(s);
+    </script>
+
+</body>
+</html>
