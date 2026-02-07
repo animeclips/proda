@@ -3,402 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ANIMECLIPS | Переходник</title>
-    
+    <title>ANIMECLIPS</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
-    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --pink: #ff0844;
-            --orange: #ffb199;
-            --purple: #a846a0;
-            --blue: #6c35d4;
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--pink:#ff0844;--orange:#ffb199;--purple:#a846a0;--blue:#6c35d4}
+        html,body{height:100%;-webkit-tap-highlight-color:transparent}
+        body{font-family:'Outfit',sans-serif;color:#fff;background:#0a0a0f;overflow-x:hidden}
+        .bg{position:fixed;inset:0;z-index:0;background:radial-gradient(circle at 20% 20%,rgba(255,8,68,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(108,53,212,.2) 0%,transparent 50%),linear-gradient(135deg,#0a0a0f,#110a1a,#0f0a15)}
+        .container{position:relative;z-index:1;max-width:400px;width:100%;margin:0 auto;padding:14px 16px 18px;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        .profile{text-align:center;margin-bottom:12px;animation:fadeIn .5s ease-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+        .ava-box{position:relative;display:inline-block;width:65px;height:65px;margin-bottom:8px}
+        .ring{position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(var(--pink),var(--orange),var(--purple),var(--blue),var(--pink));animation:rotate 4s linear infinite}
+        @keyframes rotate{to{transform:rotate(360deg)}}
+        .ava{position:relative;width:65px;height:65px;border-radius:50%;object-fit:cover;border:2px solid #0a0a0f;display:block;z-index:1}
+        .name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:2px;background:linear-gradient(135deg,#fff 30%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .tagline{display:flex;align-items:center;justify-content:center;gap:5px;font-size:11px;font-weight:700}
+        .tagline .word{background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .tagline .dot{color:var(--purple);opacity:.6}
+        .bait{width:100%;margin-bottom:10px;animation:fadeIn .5s ease-out .1s both}
+        .bait-title{font-size:15px;font-weight:800;text-align:center;margin-bottom:8px}
+        .bait-title .big{background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:17px}
+        .cards{display:flex;flex-direction:column;gap:5px}
+        .card{display:flex;align-items:center;gap:8px;padding:9px 11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;animation:slideUp .3s ease-out both}
+        .card:nth-child(1){animation-delay:.12s}
+        .card:nth-child(2){animation-delay:.17s}
+        .card:nth-child(3){animation-delay:.22s}
+        .card:nth-child(4){animation-delay:.27s}
+        @keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .card .emoji{font-size:16px;flex-shrink:0}
+        .card .text{flex:1;font-size:11px;font-weight:600;color:#ddd;line-height:1.35}
+        .card .accent{color:var(--orange);font-weight:800}
+        .card .fire{color:var(--pink);font-weight:800}
+        .arrows{display:flex;gap:0;margin-bottom:8px;animation:fadeIn .4s ease-out .32s both}
+        .arrow{font-size:16px;line-height:.6;color:var(--pink);animation:bounce 1.5s ease-in-out infinite}
+        .arrow:nth-child(1){opacity:.3}
+        .arrow:nth-child(2){opacity:.6;animation-delay:.1s}
+        .arrow:nth-child(3){opacity:1;animation-delay:.2s}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+        .cta{display:flex;align-items:center;gap:11px;width:100%;padding:13px 15px;background:linear-gradient(135deg,rgba(255,0,0,.2),rgba(255,0,0,.1));border:2px solid rgba(255,0,0,.4);border-radius:13px;text-decoration:none;color:#fff;position:relative;overflow:hidden;animation:fadeIn .5s ease-out .37s both}
+        .cta:active{transform:scale(.97)}
+        .cta::before{content:'';position:absolute;inset:-2px;border-radius:15px;border:2px solid rgba(255,0,0,.3);animation:pulsate 2s ease-out infinite;pointer-events:none}
+        @keyframes pulsate{0%{transform:scale(1);opacity:1}100%{transform:scale(1.04);opacity:0}}
+        .badge{position:absolute;top:-1px;right:11px;background:linear-gradient(135deg,#f00,#c00);color:#fff;font-size:7px;font-weight:900;letter-spacing:.5px;padding:2px 7px;border-radius:0 0 5px 5px}
+        .btn-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#f00,#c00);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+        .btn-text{flex:1}
+        .btn-title{font-size:14px;font-weight:900;margin-bottom:1px}
+        .btn-sub{font-size:10px;color:#bbb;font-weight:600}
+        .btn-arrow{font-size:16px;color:#ccc;animation:arrowPulse 1.5s ease-in-out infinite}
+        @keyframes arrowPulse{0%,100%{transform:translateX(0);opacity:.7}50%{transform:translateX(4px);opacity:1}}
+        .footer{text-align:center;margin-top:12px;animation:fadeIn .5s ease-out .45s both}
+        .footer p{font-size:8px;color:rgba(255,255,255,.2)}
+        .heart{color:var(--pink);animation:heartbeat 2s ease-in-out infinite}
+        @keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+        @media(max-height:600px){
+            .container{padding:10px 14px 14px}
+            .ava-box{width:50px;height:50px;margin-bottom:5px}
+            .ava{width:50px;height:50px}
+            .name{font-size:20px}
+            .tagline{font-size:9px}
+            .bait{margin-bottom:6px}
+            .bait-title{font-size:12px;margin-bottom:5px}
+            .bait-title .big{font-size:13px}
+            .cards{gap:3px}
+            .card{padding:6px 8px}
+            .card .emoji{font-size:12px}
+            .card .text{font-size:9px}
+            .arrows{margin-bottom:5px}
+            .arrow{font-size:12px}
+            .cta{padding:10px 12px}
+            .btn-icon{width:32px;height:32px;font-size:14px}
+            .btn-title{font-size:12px}
+            .btn-sub{font-size:9px}
+            .footer{margin-top:8px}
         }
-        
-        html, body {
-            height: 100%;
-            -webkit-tap-highlight-color: transparent;
+        @media(min-height:750px){
+            .container{padding:20px 18px 24px}
+            .profile{margin-bottom:16px}
+            .ava-box{width:75px;height:75px}
+            .ava{width:75px;height:75px}
+            .name{font-size:30px}
+            .tagline{font-size:12px}
+            .bait{margin-bottom:14px}
+            .bait-title{font-size:17px}
+            .bait-title .big{font-size:19px}
+            .card{padding:11px 13px}
+            .card .text{font-size:12px}
+            .cta{padding:15px 17px}
+            .btn-icon{width:44px;height:44px;font-size:20px}
+            .btn-title{font-size:16px}
         }
-        
-        body {
-            font-family: 'Outfit', sans-serif;
-            color: #fff;
-            background: #0a0a0f;
-            overflow-x: hidden;
-        }
-        
-        .bg {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(255, 8, 68, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(108, 53, 212, 0.2) 0%, transparent 50%),
-                linear-gradient(135deg, #0a0a0f 0%, #110a1a 50%, #0f0a15 100%);
-        }
-        
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 400px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 16px 16px 20px;
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* PROFILE — КОМПАКТНЫЙ */
-        .profile {
-            text-align: center;
-            margin-bottom: 14px;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .ava-box {
-            position: relative;
-            display: inline-block;
-            width: 70px;
-            height: 70px;
-            margin-bottom: 10px;
-        }
-        
-        .ring {
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            background: conic-gradient(var(--pink), var(--orange), var(--purple), var(--blue), var(--pink));
-            animation: rotate 4s linear infinite;
-        }
-        
-        @keyframes rotate {
-            to { transform: rotate(360deg); }
-        }
-        
-        .ava {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #0a0a0f;
-            display: block;
-            z-index: 1;
-        }
-        
-        .name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 28px;
-            letter-spacing: 2px;
-            margin-bottom: 2px;
-            background: linear-gradient(135deg, #fff 30%, var(--pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .tagline {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        
-        .tagline .word {
-            background: linear-gradient(135deg, var(--orange), var(--pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .tagline .dot {
-            color: var(--purple);
-            opacity: 0.6;
-        }
-        
-        /* BAIT — КОМПАКТНЫЙ */
-        .bait {
-            width: 100%;
-            margin-bottom: 12px;
-            animation: fadeIn 0.5s ease-out 0.1s both;
-        }
-        
-        .bait-title {
-            font-size: 16px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .bait-title .big {
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 18px;
-        }
-        
-        .cards {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        
-        .card {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            animation: slideUp 0.3s ease-out both;
-        }
-        
-        .card:nth-child(1) { animation-delay: 0.15s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.25s; }
-        .card:nth-child(4) { animation-delay: 0.3s; }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .card .emoji {
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        
-        .card .text {
-            flex: 1;
-            font-size: 12px;
-            font-weight: 600;
-            color: #ddd;
-            line-height: 1.4;
-        }
-        
-        .card .accent {
-            color: var(--orange);
-            font-weight: 800;
-        }
-        
-        .card .fire {
-            color: var(--pink);
-            font-weight: 800;
-        }
-        
-        /* ARROWS — КОМПАКТНЫЕ */
-        .arrows {
-            display: flex;
-            gap: 0;
-            margin-bottom: 10px;
-            animation: fadeIn 0.4s ease-out 0.35s both;
-        }
-        
-        .arrow {
-            font-size: 18px;
-            line-height: 0.6;
-            color: var(--pink);
-            animation: bounce 1.5s ease-in-out infinite;
-        }
-        
-        .arrow:nth-child(1) { opacity: 0.3; }
-        .arrow:nth-child(2) { opacity: 0.6; animation-delay: 0.1s; }
-        .arrow:nth-child(3) { opacity: 1; animation-delay: 0.2s; }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(4px); }
-        }
-        
-        /* BUTTON — ЯРКАЯ */
-        .cta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-            padding: 14px 16px;
-            background: linear-gradient(135deg, rgba(255,0,0,0.2), rgba(255,0,0,0.1));
-            border: 2px solid rgba(255,0,0,0.4);
-            border-radius: 14px;
-            text-decoration: none;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.25s ease;
-            animation: fadeIn 0.5s ease-out 0.4s both;
-        }
-        
-        .cta:active {
-            transform: scale(0.97);
-        }
-        
-        .cta::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 16px;
-            border: 2px solid rgba(255,0,0,0.3);
-            animation: pulsate 2s ease-out infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes pulsate {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.04); opacity: 0; }
-        }
-        
-        .badge {
-            position: absolute;
-            top: -1px;
-            right: 12px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
-            color: #fff;
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            padding: 3px 8px;
-            border-radius: 0 0 6px 6px;
-        }
-        
-        .btn-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 11px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        
-        .btn-text { flex: 1; }
-        
-        .btn-title {
-            font-size: 15px;
-            font-weight: 900;
-            margin-bottom: 2px;
-        }
-        
-        .btn-sub {
-            font-size: 11px;
-            color: #bbb;
-            font-weight: 600;
-        }
-        
-        .btn-arrow {
-            font-size: 18px;
-            color: #ccc;
-            animation: arrowPulse 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes arrowPulse {
-            0%, 100% { transform: translateX(0); opacity: 0.7; }
-            50% { transform: translateX(4px); opacity: 1; }
-        }
-        
-        /* FOOTER — МИНИМАЛЬНЫЙ */
-        .footer {
-            text-align: center;
-            margin-top: 14px;
-            animation: fadeIn 0.5s ease-out 0.5s both;
-        }
-        
-        .footer p {
-            font-size: 9px;
-            color: rgba(255,255,255,0.2);
-        }
-        
-        .heart {
-            color: var(--pink);
-            animation: heartbeat 2s ease-in-out infinite;
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-        
-        /* RESPONSIVE — ВСЁ ВИДНО СРАЗУ */
-        @media (max-height: 650px) {
-            .container { padding: 12px 14px 16px; }
-            .ava-box { width: 55px; height: 55px; margin-bottom: 6px; }
-            .ava { width: 55px; height: 55px; }
-            .name { font-size: 22px; }
-            .tagline { font-size: 10px; }
-            .bait { margin-bottom: 8px; }
-            .bait-title { font-size: 14px; margin-bottom: 6px; }
-            .bait-title .big { font-size: 15px; }
-            .cards { gap: 4px; }
-            .card { padding: 8px 10px; }
-            .card .emoji { font-size: 14px; }
-            .card .text { font-size: 10px; }
-            .arrows { margin-bottom: 6px; }
-            .arrow { font-size: 14px; }
-            .cta { padding: 12px 14px; }
-            .btn-icon { width: 36px; height: 36px; font-size: 16px; }
-            .btn-title { font-size: 13px; }
-            .btn-sub { font-size: 10px; }
-            .footer { margin-top: 10px; }
-        }
-        
-        @media (min-height: 800px) {
-            .container { padding: 24px 18px 28px; }
-            .profile { margin-bottom: 18px; }
-            .ava-box { width: 80px; height: 80px; }
-            .ava { width: 80px; height: 80px; }
-            .name { font-size: 32px; }
-            .bait { margin-bottom: 16px; }
-            .bait-title { font-size: 18px; }
-            .bait-title .big { font-size: 20px; }
-            .card { padding: 12px 14px; }
-            .card .text { font-size: 13px; }
-        }
-        
-        ::-webkit-scrollbar { display: none; }
-        body { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        * { 
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
+        ::-webkit-scrollbar{display:none}
+        *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
     </style>
 </head>
-
 <body>
-
     <div class="bg"></div>
-
     <div class="container">
-        
         <div class="profile">
             <div class="ava-box">
                 <div class="ring"></div>
-                <img class="ava" src="avatar.jpg" alt="animeclips">
+                <img class="ava" src="avatar.jpg" alt="">
             </div>
-            
             <h1 class="name">ANIMECLIPS</h1>
-            
             <div class="tagline">
                 <span>📖</span>
                 <span class="word">Манга</span>
@@ -408,50 +117,32 @@
                 <span class="word">Пересказ</span>
             </div>
         </div>
-        
         <div class="bait">
-            <h2 class="bait-title">
-                Хочешь <span class="big">больше?</span> 👀
-            </h2>
-            
+            <h2 class="bait-title">Хочешь <span class="big">больше?</span> 👀</h2>
             <div class="cards">
                 <div class="card">
                     <span class="emoji">🎬</span>
-                    <div class="text">
-                        <span class="accent">Полноценные длинные ролики</span> вместо частей
-                    </div>
+                    <div class="text"><span class="accent">Полноценные длинные ролики</span> вместо частей</div>
                 </div>
-                
                 <div class="card">
                     <span class="emoji">🔥</span>
-                    <div class="text">
-                        <span class="accent">Эксклюзив</span> — контент только для своих
-                    </div>
+                    <div class="text"><span class="accent">Эксклюзив</span> — контент только для своих</div>
                 </div>
-                
                 <div class="card">
                     <span class="emoji">⛔</span>
-                    <div class="text">
-                        Пересказы <span class="fire">манги</span>•<span class="fire">манхвы</span> которые <span class="accent">не пропустили</span> 💀
-                    </div>
+                    <div class="text">Пересказы <span class="fire">манги</span>•<span class="fire">манхвы</span> которые <span class="accent">не пропустили</span> 💀</div>
                 </div>
-                
                 <div class="card">
                     <span class="emoji">⚡</span>
-                    <div class="text">
-                        <span class="fire">Продолжение</span> пересказа <span class="accent">раньше</span> чем на канале
-                    </div>
+                    <div class="text"><span class="fire">Продолжение</span> пересказа <span class="accent">раньше</span> чем на канале</div>
                 </div>
             </div>
         </div>
-        
         <div class="arrows">
             <span class="arrow">⬇</span>
             <span class="arrow">⬇</span>
             <span class="arrow">⬇</span>
         </div>
-        
-        <!-- ЗАМЕНИ href="..." НА СВОЮ ССЫЛКУ -->
         <a href="https://youtube.com/@ComeHuma" class="cta">
             <div class="badge">★ ЖМИ</div>
             <div class="btn-icon">▶️</div>
@@ -461,12 +152,9 @@
             </div>
             <span class="btn-arrow">→</span>
         </a>
-        
         <div class="footer">
             <p>made with <span class="heart">❤</span> animeclips</p>
         </div>
-        
     </div>
-
 </body>
 </html>
