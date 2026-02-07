@@ -9,16 +9,16 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --c1: #ff0844;
-            --c2: #ffb199;
-            --c3: #a846a0;
-            --c4: #6c35d4;
+            --pink: #ff0844;
+            --orange: #ffb199;
+            --purple: #a846a0;
+            --blue: #6c35d4;
         }
         
         html, body {
@@ -47,7 +47,6 @@
                 radial-gradient(circle at 50% 50%, rgba(168, 70, 160, 0.12) 0%, transparent 50%),
                 linear-gradient(135deg, #0a0a0f 0%, #110a1a 50%, #0f0a15 100%);
             animation: bgShift 25s ease-in-out infinite;
-            will-change: transform;
         }
         
         @keyframes bgShift {
@@ -80,24 +79,23 @@
             height: 3px;
             border-radius: 50%;
             opacity: 0;
-            will-change: transform, opacity;
         }
         
-        .p1 { background: var(--c1); left: 10%; animation: rise1 18s linear infinite; }
-        .p2 { background: var(--c2); left: 30%; animation: rise2 20s linear infinite 3s; }
-        .p3 { background: var(--c3); left: 50%; animation: rise1 22s linear infinite 6s; }
-        .p4 { background: var(--c4); left: 70%; animation: rise2 19s linear infinite 9s; }
-        .p5 { background: var(--c1); left: 90%; animation: rise1 21s linear infinite 12s; }
+        .p1 { background: var(--pink); left: 10%; animation: rise1 18s linear infinite; }
+        .p2 { background: var(--orange); left: 30%; animation: rise2 20s linear infinite 3s; }
+        .p3 { background: var(--purple); left: 50%; animation: rise1 22s linear infinite 6s; }
+        .p4 { background: var(--blue); left: 70%; animation: rise2 19s linear infinite 9s; }
+        .p5 { background: var(--pink); left: 90%; animation: rise1 21s linear infinite 12s; }
         
         @keyframes rise1 {
-            0% { opacity: 0; transform: translateY(100vh) translateX(0) scale(0); }
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
             10% { opacity: 0.6; }
             90% { opacity: 0.6; }
             100% { opacity: 0; transform: translateY(-10vh) translateX(30px) scale(1.5); }
         }
         
         @keyframes rise2 {
-            0% { opacity: 0; transform: translateY(100vh) translateX(0) scale(0); }
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
             10% { opacity: 0.6; }
             90% { opacity: 0.6; }
             100% { opacity: 0; transform: translateY(-10vh) translateX(-30px) scale(1.5); }
@@ -123,7 +121,7 @@
         }
         
         /* ═══════════════════════════════════
-           PROFILE — СТИЛЬНО
+           PROFILE
            ═══════════════════════════════════ */
         
         .profile {
@@ -149,9 +147,8 @@
             position: absolute;
             inset: -3px;
             border-radius: 50%;
-            background: conic-gradient(var(--c1), var(--c2), var(--c3), var(--c4), var(--c1));
+            background: conic-gradient(var(--pink), var(--orange), var(--purple), var(--blue), var(--pink));
             animation: rotate 4s linear infinite;
-            will-change: transform;
         }
         
         @keyframes rotate {
@@ -169,68 +166,71 @@
             z-index: 1;
         }
         
-        /* Имя — ЖИРНОЕ */
+        /* ИМЯ — КРУПНОЕ */
         .name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 30px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
             font-weight: 900;
-            letter-spacing: -1px;
+            letter-spacing: 2px;
             margin-bottom: 6px;
-            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            background: linear-gradient(135deg, #fff 30%, var(--pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255,8,68,0.3);
         }
         
-        /* Ник — ЯРКИЙ */
+        /* НИК — ЯРКИЙ */
         .handle {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
-            color: var(--c1);
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
+            color: var(--pink);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--pink);
         }
         
-        /* Описание — СТИЛЬНОЕ */
-        .desc {
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1.6;
-            color: #fff;
+        /* ОПИСАНИЕ — СТИЛЬНОЕ С РАЗДЕЛИТЕЛЯМИ */
+        .tagline {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.6;
             flex-wrap: wrap;
         }
         
-        .desc .emoji {
-            font-size: 16px;
-            animation: float 3s ease-in-out infinite;
+        .tagline .icon {
+            font-size: 18px;
+            animation: floatIcon 3s ease-in-out infinite;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(5deg); }
         }
         
-        .desc .sep {
-            color: var(--c3);
-            font-weight: 800;
-            opacity: 0.6;
-        }
-        
-        .desc .word {
-            background: linear-gradient(135deg, var(--c2), var(--c3));
+        .tagline .word {
+            background: linear-gradient(135deg, var(--orange), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 16px;
+        }
+        
+        .tagline .dot {
+            color: var(--purple);
+            font-weight: 900;
+            opacity: 0.7;
+            font-size: 18px;
         }
         
         /* ═══════════════════════════════════
-           BAIT — ПРИВЛЕКАТЕЛЬНО
+           BAIT
            ═══════════════════════════════════ */
         
         .bait {
@@ -240,82 +240,83 @@
         }
         
         .bait-title {
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 800;
             text-align: center;
             margin-bottom: 14px;
             line-height: 1.4;
         }
         
-        .hl {
-            background: linear-gradient(135deg, var(--c1), var(--c3));
+        .bait-title .big {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 21px;
+            font-size: 24px;
+            font-weight: 900;
+            display: inline-block;
         }
         
-        .items {
+        .cards {
             display: flex;
             flex-direction: column;
-            gap: 9px;
+            gap: 10px;
         }
         
-        /* Карточки — СТИЛЬНЫЕ */
-        .item {
+        /* КАРТОЧКИ — СТИЛЬНЫЕ */
+        .card {
             display: flex;
-            align-items: center;
-            gap: 11px;
-            padding: 12px 14px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 13px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #e0e0e0;
-            text-align: left;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 15px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
             animation: slideUp 0.4s ease-out both;
             transition: all 0.3s ease;
         }
         
-        .item:nth-child(1) { animation-delay: 0.25s; }
-        .item:nth-child(2) { animation-delay: 0.35s; }
-        .item:nth-child(3) { animation-delay: 0.45s; }
+        .card:nth-child(1) { animation-delay: 0.25s; }
+        .card:nth-child(2) { animation-delay: 0.35s; }
+        .card:nth-child(3) { animation-delay: 0.45s; }
         
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         @media (hover: hover) {
-            .item:hover {
-                background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-                border-color: rgba(255,255,255,0.12);
-                transform: translateX(3px);
+            .card:hover {
+                background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+                border-color: rgba(255,255,255,0.15);
+                transform: translateX(4px);
             }
         }
         
-        .item .e {
-            font-size: 20px;
+        .card .emoji {
+            font-size: 22px;
             flex-shrink: 0;
-            width: 26px;
+            width: 28px;
             text-align: center;
-            filter: drop-shadow(0 0 8px currentColor);
+            filter: drop-shadow(0 0 10px currentColor);
         }
         
-        .item .txt {
+        .card .text {
             flex: 1;
-            line-height: 1.4;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e0e0e0;
+            line-height: 1.5;
         }
         
         /* Выделяем ключевые слова */
-        .item .highlight {
-            color: var(--c2);
-            font-weight: 700;
+        .card .accent {
+            color: var(--orange);
+            font-weight: 800;
         }
         
         /* ═══════════════════════════════════
-           ARROWS — ДИНАМИЧНЫЕ
+           ARROWS
            ═══════════════════════════════════ */
         
         .arrows {
@@ -326,89 +327,87 @@
             animation: fadeIn 0.5s ease-out 0.55s both;
         }
         
-        .a {
-            font-size: 22px;
+        .arrow {
+            font-size: 24px;
             line-height: 0.7;
-            color: var(--c1);
-            animation: bob 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 6px var(--c1));
-            will-change: transform;
+            color: var(--pink);
+            animation: bounce 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px var(--pink));
         }
         
-        .a:nth-child(1) { opacity: 0.3; animation-delay: 0s; }
-        .a:nth-child(2) { opacity: 0.6; animation-delay: 0.12s; }
-        .a:nth-child(3) { opacity: 1; animation-delay: 0.24s; }
+        .arrow:nth-child(1) { opacity: 0.3; animation-delay: 0s; }
+        .arrow:nth-child(2) { opacity: 0.6; animation-delay: 0.12s; }
+        .arrow:nth-child(3) { opacity: 1; animation-delay: 0.24s; }
         
-        @keyframes bob {
+        @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
+            50% { transform: translateY(6px); }
         }
         
         /* ═══════════════════════════════════
-           BUTTON — МОЩНАЯ
+           BUTTON
            ═══════════════════════════════════ */
         
-        .btn {
+        .cta {
             display: flex;
             align-items: center;
-            gap: 13px;
+            gap: 14px;
             width: 100%;
-            padding: 16px 17px;
-            background: linear-gradient(135deg, rgba(255,0,0,0.15), rgba(255,0,0,0.08));
-            border: 1.5px solid rgba(255,0,0,0.3);
-            border-radius: 15px;
+            padding: 17px 18px;
+            background: linear-gradient(135deg, rgba(255,0,0,0.18), rgba(255,0,0,0.1));
+            border: 2px solid rgba(255,0,0,0.35);
+            border-radius: 16px;
             text-decoration: none;
             color: #fff;
             position: relative;
             overflow: hidden;
             transition: all 0.25s ease;
             animation: fadeIn 0.5s ease-out 0.65s both;
-            will-change: transform;
         }
         
-        .btn:active {
+        .cta:active {
             transform: scale(0.96);
         }
         
         @media (hover: hover) {
-            .btn:hover {
+            .cta:hover {
                 transform: translateY(-3px);
-                border-color: rgba(255,0,0,0.5);
-                background: linear-gradient(135deg, rgba(255,0,0,0.2), rgba(255,0,0,0.1));
-                box-shadow: 0 8px 25px rgba(255,0,0,0.15);
+                border-color: rgba(255,0,0,0.6);
+                background: linear-gradient(135deg, rgba(255,0,0,0.25), rgba(255,0,0,0.15));
+                box-shadow: 0 10px 30px rgba(255,0,0,0.2);
             }
         }
         
         /* Пульсация */
-        .btn::before {
+        .cta::before {
             content: '';
             position: absolute;
-            inset: -2px;
-            border-radius: 17px;
-            border: 2px solid rgba(255,0,0,0.25);
-            animation: pulse 2.5s ease-out infinite;
+            inset: -3px;
+            border-radius: 18px;
+            border: 2px solid rgba(255,0,0,0.3);
+            animation: pulsate 2.5s ease-out infinite;
             pointer-events: none;
         }
         
-        @keyframes pulse {
+        @keyframes pulsate {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.04); opacity: 0; }
+            100% { transform: scale(1.05); opacity: 0; }
         }
         
-        /* Блеск при hover */
-        .btn::after {
+        /* Блеск */
+        .cta::after {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s;
         }
         
         @media (hover: hover) {
-            .btn:hover::after {
+            .cta:hover::after {
                 left: 100%;
             }
         }
@@ -416,57 +415,56 @@
         .badge {
             position: absolute;
             top: -1px;
-            right: 13px;
-            background: linear-gradient(135deg, #f00, #d00);
+            right: 14px;
+            background: linear-gradient(135deg, #ff0000, #d00000);
             color: #fff;
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 3px 8px;
-            border-radius: 0 0 6px 6px;
-            box-shadow: 0 2px 8px rgba(255,0,0,0.3);
+            letter-spacing: 1px;
+            padding: 4px 9px;
+            border-radius: 0 0 7px 7px;
+            box-shadow: 0 3px 10px rgba(255,0,0,0.4);
         }
         
-        .icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #f00, #d00);
+        .btn-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 24px;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(255,0,0,0.25);
+            box-shadow: 0 4px 15px rgba(255,0,0,0.3);
         }
         
-        .info { flex: 1; min-width: 0; }
+        .btn-text { flex: 1; }
         
-        .title {
-            font-size: 16px;
-            font-weight: 800;
+        .btn-title {
+            font-size: 17px;
+            font-weight: 900;
             line-height: 1.2;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
         
-        .sub {
-            font-size: 11px;
-            color: #aaa;
+        .btn-sub {
+            font-size: 12px;
+            color: #bbb;
             font-weight: 600;
         }
         
-        .go {
-            font-size: 18px;
-            color: #bbb;
+        .btn-arrow {
+            font-size: 20px;
+            color: #ccc;
             flex-shrink: 0;
             transition: all 0.25s ease;
-            will-change: transform;
         }
         
         @media (hover: hover) {
-            .btn:hover .go {
-                transform: translateX(4px);
+            .cta:hover .btn-arrow {
+                transform: translateX(5px);
                 color: #fff;
             }
         }
@@ -475,26 +473,25 @@
            FOOTER
            ═══════════════════════════════════ */
         
-        .ft {
+        .footer {
             text-align: center;
-            margin-top: 26px;
+            margin-top: 28px;
             animation: fadeIn 0.5s ease-out 0.75s both;
         }
         
-        .ft p {
-            font-size: 10px;
+        .footer p {
+            font-size: 11px;
             color: rgba(255,255,255,0.25);
             font-weight: 600;
         }
         
         .heart {
-            color: var(--c1);
+            color: var(--pink);
             display: inline-block;
-            animation: beat 2.5s ease-in-out infinite;
-            will-change: transform;
+            animation: heartbeat 2.5s ease-in-out infinite;
         }
         
-        @keyframes beat {
+        @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
         }
@@ -507,29 +504,30 @@
             .container { padding: 20px 16px; }
             .profile { margin-bottom: 18px; }
             .ava-box { width: 80px; height: 80px; margin-bottom: 12px; }
-            .ring { inset: -2px; }
             .ava { width: 80px; height: 80px; }
-            .name { font-size: 24px; }
-            .desc { font-size: 13px; }
+            .name { font-size: 28px; }
+            .tagline { font-size: 13px; }
+            .tagline .word { font-size: 14px; }
             .bait { margin-bottom: 16px; }
-            .bait-title { font-size: 16px; margin-bottom: 10px; }
-            .hl { font-size: 18px; }
-            .item { padding: 10px 12px; font-size: 12px; }
-            .arrows { margin-bottom: 10px; }
-            .btn { padding: 14px 15px; }
-            .icon { width: 40px; height: 40px; font-size: 19px; }
-            .title { font-size: 14px; }
-            .ft { margin-top: 18px; }
+            .bait-title { font-size: 17px; margin-bottom: 10px; }
+            .bait-title .big { font-size: 20px; }
+            .card { padding: 11px 12px; }
+            .card .text { font-size: 13px; }
+            .cta { padding: 14px 15px; }
+            .btn-icon { width: 42px; height: 42px; font-size: 20px; }
+            .btn-title { font-size: 15px; }
+            .footer { margin-top: 18px; }
         }
         
         @media (min-width: 768px) {
             .container { padding: 40px 20px; }
             .ava-box { width: 105px; height: 105px; }
             .ava { width: 105px; height: 105px; }
-            .name { font-size: 34px; }
-            .desc { font-size: 15px; }
-            .bait-title { font-size: 21px; }
-            .hl { font-size: 23px; }
+            .name { font-size: 42px; }
+            .tagline { font-size: 16px; }
+            .tagline .word { font-size: 17px; }
+            .bait-title { font-size: 22px; }
+            .bait-title .big { font-size: 26px; }
         }
         
         ::-webkit-scrollbar { display: none; }
@@ -560,7 +558,9 @@
 
     <div class="container">
         
-        <!-- PROFILE -->
+        <!-- ═══════════════════════════════════
+             PROFILE
+             ═══════════════════════════════════ -->
         <div class="profile">
             <div class="ava-box">
                 <div class="ring"></div>
@@ -571,64 +571,74 @@
             <p class="handle">@animeclips</p>
             
             <!-- СТИЛЬНОЕ ОПИСАНИЕ -->
-            <div class="desc">
-                <span class="emoji">📖</span>
+            <div class="tagline">
+                <span class="icon">📖</span>
                 <span class="word">Манга</span>
-                <span class="sep">•</span>
+                <span class="dot">•</span>
                 <span class="word">Манхва</span>
-                <span class="sep">•</span>
+                <span class="dot">•</span>
                 <span class="word">Пересказ</span>
             </div>
         </div>
         
-        <!-- BAIT -->
+        <!-- ═══════════════════════════════════
+             BAIT
+             ═══════════════════════════════════ -->
         <div class="bait">
             <h2 class="bait-title">
-                Хочешь увидеть <span class="hl">больше?</span> 👀
+                Хочешь увидеть <span class="big">больше?</span> 👀
             </h2>
             
-            <div class="items">
-                <div class="item">
-                    <span class="e">🎬</span>
-                    <span class="txt">
-                        <span class="highlight">Полный пересказ</span> манхвы целым роликом
-                    </span>
+            <div class="cards">
+                <div class="card">
+                    <span class="emoji">🎬</span>
+                    <div class="text">
+                        <span class="accent">Полный пересказ</span> манхвы целым роликом
+                    </div>
                 </div>
-                <div class="item">
-                    <span class="e">🔥</span>
-                    <span class="txt">
-                        <span class="highlight">Эксклюзивный</span> контент только для вас
-                    </span>
+                
+                <div class="card">
+                    <span class="emoji">🔥</span>
+                    <div class="text">
+                        <span class="accent">Эксклюзивный</span> контент только для вас
+                    </div>
                 </div>
-                <div class="item">
-                    <span class="e">🚫</span>
-                    <span class="txt">
-                        То что <span class="highlight">не пропустили</span> на канале
-                    </span>
+                
+                <div class="card">
+                    <span class="emoji">🚫</span>
+                    <div class="text">
+                        То что <span class="accent">не прошло</span> на основном канале
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- ARROWS -->
+        <!-- ═══════════════════════════════════
+             ARROWS
+             ═══════════════════════════════════ -->
         <div class="arrows">
-            <span class="a">⬇</span>
-            <span class="a">⬇</span>
-            <span class="a">⬇</span>
+            <span class="arrow">⬇</span>
+            <span class="arrow">⬇</span>
+            <span class="arrow">⬇</span>
         </div>
         
-        <!-- BUTTON -->
-        <a href="https://youtube.com/@ComeHuma" class="btn">
-            <div class="badge">★ ЖМИИ</div>
-            <div class="icon">▶️</div>
-            <div class="info">
-                <div class="title">Смотреть на YouTube</div>
-                <div class="sub">Нажми чтобы перейти →</div>
+        <!-- ═══════════════════════════════════
+             BUTTON
+             ═══════════════════════════════════ -->
+        <a href="https://youtube.com/@ComeHuma" class="cta">
+            <div class="badge">★ ЖМИ</div>
+            <div class="btn-icon">▶️</div>
+            <div class="btn-text">
+                <div class="btn-title">Смотреть на YouTube</div>
+                <div class="btn-sub">Нажми чтобы перейти →</div>
             </div>
-            <span class="go">→</span>
+            <span class="btn-arrow">→</span>
         </a>
         
-        <!-- Footer -->
-        <div class="ft">
+        <!-- ═══════════════════════════════════
+             FOOTER
+             ═══════════════════════════════════ -->
+        <div class="footer">
             <p>made with <span class="heart">❤️</span> animeclips</p>
         </div>
         
