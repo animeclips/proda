@@ -15,6 +15,7 @@
             --orange: #ffb199;
             --purple: #a846a0;
             --blue: #6c35d4;
+            --telegram: #2AABEE;
             --glow: rgba(255, 8, 68, 0.4);
         }
         
@@ -29,10 +30,6 @@
             background: #060609;
             overflow-x: hidden;
         }
-        
-        /* ═══════════════════════════════════════════
-           КРАСИВЫЙ ФОН
-           ═══════════════════════════════════════════ */
         
         .bg {
             position: fixed;
@@ -51,7 +48,6 @@
             100% { opacity: 0.85; }
         }
         
-        /* Сетка */
         .grid {
             position: fixed;
             inset: 0;
@@ -65,7 +61,6 @@
             -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
         }
         
-        /* Частицы */
         .particles {
             position: fixed;
             inset: 0;
@@ -92,10 +87,6 @@
             100% { opacity: 0; transform: translateY(-10vh) scale(1.2); }
         }
         
-        /* ═══════════════════════════════════════════
-           КОНТЕЙНЕР
-           ═══════════════════════════════════════════ */
-        
         .container {
             position: relative;
             z-index: 1;
@@ -110,10 +101,6 @@
             align-items: center;
             justify-content: center;
         }
-        
-        /* ═══════════════════════════════════════════
-           PROFILE — КРАСИВЫЙ
-           ═══════════════════════════════════════════ */
         
         .profile {
             text-align: center;
@@ -132,7 +119,6 @@
             margin-bottom: 12px;
         }
         
-        /* Свечение под аватаркой */
         .ava-glow {
             position: absolute;
             inset: -15px;
@@ -147,18 +133,11 @@
             50% { opacity: 0.8; transform: scale(1.1); }
         }
         
-        /* Кольцо */
         .ava-ring {
             position: absolute;
             inset: -4px;
             border-radius: 50%;
-            background: conic-gradient(
-                var(--pink),
-                var(--orange),
-                var(--purple),
-                var(--blue),
-                var(--pink)
-            );
+            background: conic-gradient(var(--pink), var(--orange), var(--purple), var(--blue), var(--pink));
             animation: rotate 4s linear infinite;
             z-index: 1;
         }
@@ -178,7 +157,6 @@
             z-index: 2;
         }
         
-        /* Имя */
         .name {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 34px;
@@ -197,7 +175,6 @@
             100% { filter: drop-shadow(0 0 25px rgba(255, 8, 68, 0.4)); }
         }
         
-        /* Теглайн */
         .tagline {
             display: flex;
             align-items: center;
@@ -231,10 +208,6 @@
             opacity: 0.5;
         }
         
-        /* ═══════════════════════════════════════════
-           BAIT SECTION
-           ═══════════════════════════════════════════ */
-        
         .bait {
             width: 100%;
             margin-bottom: 14px;
@@ -257,7 +230,6 @@
             font-weight: 900;
         }
         
-        /* Карточки */
         .cards {
             display: flex;
             flex-direction: column;
@@ -275,7 +247,6 @@
             position: relative;
             overflow: hidden;
             animation: slideUp 0.4s ease-out both;
-            transition: all 0.3s ease;
         }
         
         .card::before {
@@ -344,10 +315,6 @@
             font-weight: 800;
         }
         
-        /* ═══════════════════════════════════════════
-           СТРЕЛКИ
-           ═══════════════════════════════════════════ */
-        
         .arrows {
             display: flex;
             flex-direction: column;
@@ -360,8 +327,8 @@
         .arrow {
             font-size: 20px;
             line-height: 0.65;
-            color: var(--pink);
-            filter: drop-shadow(0 0 8px var(--pink));
+            color: var(--telegram);
+            filter: drop-shadow(0 0 8px var(--telegram));
             animation: arrowBounce 1.5s ease-in-out infinite;
         }
         
@@ -374,18 +341,15 @@
             50% { transform: translateY(5px); }
         }
         
-        /* ═══════════════════════════════════════════
-           КНОПКА — ЭФФЕКТНАЯ
-           ═══════════════════════════════════════════ */
-        
+        /* TELEGRAM BUTTON */
         .cta {
             display: flex;
             align-items: center;
             gap: 14px;
             width: 100%;
             padding: 16px 18px;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(255, 50, 50, 0.08));
-            border: 2px solid rgba(255, 0, 0, 0.35);
+            background: linear-gradient(135deg, rgba(42, 171, 238, 0.15), rgba(42, 171, 238, 0.08));
+            border: 2px solid rgba(42, 171, 238, 0.35);
             border-radius: 16px;
             text-decoration: none;
             color: #fff;
@@ -399,13 +363,12 @@
             transform: scale(0.97);
         }
         
-        /* Пульсация вокруг кнопки */
         .cta::before {
             content: '';
             position: absolute;
             inset: -3px;
             border-radius: 18px;
-            border: 2px solid rgba(255, 0, 0, 0.25);
+            border: 2px solid rgba(42, 171, 238, 0.25);
             animation: pulse 2s ease-out infinite;
             pointer-events: none;
         }
@@ -415,7 +378,6 @@
             100% { transform: scale(1.05); opacity: 0; }
         }
         
-        /* Блик */
         .cta::after {
             content: '';
             position: absolute;
@@ -437,39 +399,39 @@
             position: absolute;
             top: -1px;
             right: 14px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2AABEE, #229ED9);
             color: #fff;
             font-size: 8px;
             font-weight: 900;
             letter-spacing: 0.8px;
             padding: 4px 10px;
             border-radius: 0 0 8px 8px;
-            box-shadow: 0 3px 12px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 3px 12px rgba(42, 171, 238, 0.4);
             animation: badgePulse 2s ease-in-out infinite;
         }
         
         @keyframes badgePulse {
-            0%, 100% { box-shadow: 0 3px 12px rgba(255, 0, 0, 0.4); }
-            50% { box-shadow: 0 3px 20px rgba(255, 0, 0, 0.7); }
+            0%, 100% { box-shadow: 0 3px 12px rgba(42, 171, 238, 0.4); }
+            50% { box-shadow: 0 3px 20px rgba(42, 171, 238, 0.7); }
         }
         
         .btn-icon {
             width: 46px;
             height: 46px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2AABEE, #229ED9);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.35);
+            box-shadow: 0 4px 15px rgba(42, 171, 238, 0.35);
             animation: iconGlow 2s ease-in-out infinite alternate;
         }
         
         @keyframes iconGlow {
-            0% { box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); }
-            100% { box-shadow: 0 4px 25px rgba(255, 0, 0, 0.5); }
+            0% { box-shadow: 0 4px 15px rgba(42, 171, 238, 0.3); }
+            100% { box-shadow: 0 4px 25px rgba(42, 171, 238, 0.5); }
         }
         
         .btn-text { flex: 1; }
@@ -497,10 +459,6 @@
             50% { transform: translateX(5px); opacity: 1; }
         }
         
-        /* ═══════════════════════════════════════════
-           FOOTER
-           ═══════════════════════════════════════════ */
-        
         .footer {
             text-align: center;
             margin-top: 16px;
@@ -524,11 +482,6 @@
             50% { transform: scale(1.25); }
         }
         
-        /* ═══════════════════════════════════════════
-           RESPONSIVE — ВСЁ ВИДНО
-           ═══════════════════════════════════════════ */
-        
-        /* Маленькие экраны */
         @media (max-height: 680px) {
             .container { padding: 14px 16px; }
             .profile { margin-bottom: 12px; }
@@ -553,7 +506,6 @@
             .footer { margin-top: 12px; }
         }
         
-        /* Очень маленькие */
         @media (max-height: 600px) {
             .container { padding: 10px 14px; }
             .ava { width: 55px; height: 55px; }
@@ -569,7 +521,6 @@
             .btn-title { font-size: 13px; }
         }
         
-        /* Большие экраны */
         @media (min-height: 800px) {
             .container { padding: 28px 20px; }
             .profile { margin-bottom: 22px; }
@@ -650,11 +601,11 @@
             <span class="arrow">⬇</span>
         </div>
         
-        <a href="https://youtube.com/@ComeHuma" class="cta">
+        <a href="https://t.me/tribute/app?startapp=sNtY-5FZbBU15aKw" class="cta">
             <div class="badge">★ ЖМИ</div>
-            <div class="btn-icon">▶️</div>
+            <div class="btn-icon">✈️</div>
             <div class="btn-text">
-                <div class="btn-title">Смотреть на YouTube</div>
+                <div class="btn-title">Открыть в Telegram</div>
                 <div class="btn-sub">Нажми чтобы перейти</div>
             </div>
             <span class="btn-arrow">→</span>
